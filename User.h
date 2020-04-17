@@ -7,9 +7,18 @@ using namespace std;
 
 class User
 {
+    int userId;
+    string name;
+    string password;
 
-    public:
+public:
+    void setId(int newId);
+    void setName(string newName);
+    void setPassword(string newPassword);
 
+    int getId();
+    string getName();
+    string getPassword();
 };
 
 
