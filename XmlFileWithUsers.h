@@ -14,10 +14,7 @@ using namespace std;
 
 class XmlFileWithUsers : public XmlFile
 {
-    //string replaceUserDataWithDataLineDividedByVerticalDashes();
     //User getUserData();
-    string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(User user);
-    User pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
 public:
 
@@ -26,7 +23,6 @@ public:
     {}
 
     void addUserToFile(User user);
-    void zapiszWszystkichUzytkownikowDoPliku(vector <User> &users);
     //void addAllUsersToFile(vector <User> &users);
     vector <User> loadUsersFromFile();
 
