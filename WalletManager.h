@@ -10,29 +10,29 @@ using namespace std;
 class WalletManager
 {
     UserManager userManager;
-   // AdresatMenadzer *adresatMenadzer;
-   // const string NAZWA_PLIKU_Z_UZYTKOWNIKAMI;
-   // const string NAZWA_PLIKU_Z_ADRESATAMI;
-   // const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI;
+   // BalanceSheet *balanceSheet;
 
+   const string FILE_NAME_USERS;
+   //const string FILE_NAME_INCOMES;
+   //const string FILE_NAME_EXPENSES;
 
 public:
-/*
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami, string nazwaTymczasowegoPlikuZAdresatami)
-        : uzytkownikMenadzer(nazwaPlikuZUzytkownikami, nazwaPlikuZAdresatami, nazwaTymczasowegoPlikuZAdresatami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami), NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI(nazwaTymczasowegoPlikuZAdresatami)
+
+WalletManager(string fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
+        : userManager(fileNameUsers/*, fileNameIncomes, fileNameExpenses*/) /*,FILE_NAME_INCOMES(fileNameIncomes), FILE_NAME_EXPENSES(fileNameExpenses)*/
     {
-        adresatMenadzer = NULL;
+        // BalanceSheet = NULL;
     }
-    ~KsiazkaAdresowa()
+   /* ~WalletManager()
     {
-        delete adresatMenadzer;
-        adresatMenadzer = NULL;
+        delete BalanceSheet;
+        BalanceSheet = NULL;
     }
 */
     void registration();
     void displayAllUsers();
     void logIn();
-    void logout();
+    void logOut();
     void changePasswordLoggedInUser();
     bool isLogIn();
 

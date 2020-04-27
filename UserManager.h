@@ -8,37 +8,37 @@
 #include <fstream>
 
 #include "User.h"
-//#include "PlikZUzytkownikami.h"
+#include "XmlFileWithUsers.h"
 
 using namespace std;
 
 class UserManager
 {
-    //PlikZUzytkownikami plikZUzytkownikami;
+    XmlFileWithUsers xmlFileWithUsers;
 
     int loggedInUserID;
     vector <User> users;
 
     User enterNewUserData();
     int getNewUserID();
-    bool isName(string name);
+    int getLoggedInUserID();
+    bool isNick(string nick);
 
 public:
-    /*
-    UzytkownikMenadzer(string nazwaPliku, string nazwaPlikuZAdresatami, string nazwaTymczasowegoPlikuZAdresatami)
-        : plikZUzytkownikami(nazwaPliku, nazwaPlikuZAdresatami, nazwaTymczasowegoPlikuZAdresatami)
+
+    UserManager(string fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
+        : xmlFileWithUsers(fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
     {
-        idZalogowanegoUzytkownika = 0;
-        uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+        loggedInUserID = 0;
+        //users = xmlFileWithUsers.loadUsersFromFile();
     }
-    */
+
     void registration();
     void logIn();
-    void logout();
+    void logOut();
     void changePasswordLoggedInUser();
     void displayAllUsers();
     bool isLogIn();
-    int getLoggedInUserID();
 };
 
 

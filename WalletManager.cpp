@@ -1,4 +1,4 @@
-#include "KsiazkaAdresowa.h"
+#include "WalletManager.h"
 
 void WalletManager::registration()
 {
@@ -15,15 +15,15 @@ void WalletManager::logIn()
     userManager.logIn();
    // if (userManager.isLogIn())
 
-        //adresatMenadzer = new AdresatMenadzer(NAZWA_PLIKU_Z_UZYTKOWNIKAMI, NAZWA_PLIKU_Z_ADRESATAMI, NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
+        //balanceSheet = new BalanceSheet(FILE_NAME_USERS, FILE_NAME_INCOMES, FILE_NAME_EXPENSES, userManager.getLoggedInUserID());
 
 }
 
-void WalletManager::logout()
+void WalletManager::logOut()
 {
-    userManager.logout();
-    //delete adresatMenadzer;
-    // adresatMenadzer = NULL;
+    userManager.logOut();
+    //delete balanceSheet;
+    // balanceSheet = NULL;
 }
 
 void WalletManager::changePasswordLoggedInUser()

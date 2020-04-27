@@ -2,10 +2,10 @@
 
 void UserManager::registration()
 {
-    Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
+    User user = enterNewUserData();
 
-    uzytkownicy.push_back(uzytkownik);
-    plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    users.push_back(user);
+    xmlFileWithUsers.addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
@@ -14,39 +14,49 @@ void UserManager::registration()
 User UserManager::enterNewUserData()
 {
     User user;
+    string name;
+    string lastName;
 
     user.setId(getNewUserID());
 
-    string login;
+    cout << "Podaj swoje imie: ";
+    name = AdditionalMethods::loadLine();
+    user.setName(name);
+
+    cout << "Podaj swoje nazwisko: ";
+    lastName = AdditionalMethods::loadLine();
+    user.setLastName(lastName);
+
+    string nick;
     do
     {
         cout << "Podaj login: ";
-        login = MetodyPomocnicze::wczytajLinie();
-        uzytkownik.ustawLogin(login);
+        nick = AdditionalMethods::loadLine();
+        user.setNick(nick);
     }
-    while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
+    while (isNick(user.getNick()) == true);
 
-    string haslo;
+    string password;
     cout << "Podaj haslo: ";
-    haslo = MetodyPomocnicze::wczytajLinie();
-    uzytkownik.ustawHaslo(haslo);
+    password = AdditionalMethods::loadLine();
+    user.setPassword(password);
 
-    return uzytkownik;
+    return user;
 }
 
-int UserManager::pobierzIdNowegoUzytkownika()
+int UserManager::getNewUserID()
 {
-    if (uzytkownicy.empty() == true)
+    if (users.empty() == true)
         return 1;
     else
-        return uzytkownicy.back().pobierzId() + 1;
+        return users.back().getId() + 1;
 }
 
-bool UserManager::czyIstniejeLogin(string name)
+bool UserManager::isNick(string nick)
 {
-    for (int i = 0; i < uzytkownicy.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
-        if(uzytkownicy[i].pobierzLogin() == name)
+        if(users[i].getNick() == nick)
         {
             cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
             return true;
@@ -55,39 +65,41 @@ bool UserManager::czyIstniejeLogin(string name)
     return false;
 }
 
-void UserManager::wypiszWszystkichUzytkownikow()
+void UserManager::displayAllUsers()
 {
-    for (int i = 0; i < uzytkownicy.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
-        cout << uzytkownicy[i].pobierzId() << endl;
-        cout << uzytkownicy[i].pobierzLogin() << endl;
-        cout << uzytkownicy[i].pobierzHaslo() << endl;
+        cout << users[i].getId() << endl;
+        cout << users[i].getName() << endl;
+        cout << users[i].getLastName() << endl;
+        cout << users[i].getNick() << endl;
+        cout << users[i].getPassword() << endl;
     }
 }
 
-void UserManager::logowanieUzytkownika()
+void UserManager::logIn()
 {
-    Uzytkownik uzytkownik;
-    string login = "", haslo = "";
+    User user;
+    string nick = "", password = "";
 
     cout << endl << "Podaj login: ";
 
-    login = MetodyPomocnicze::wczytajLinie();
+    nick = AdditionalMethods::loadLine();
 
-    for (int i = 0; i < uzytkownicy.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
-        if (uzytkownicy[i].pobierzLogin() == login)
+        if (users[i].getNick() == nick)
         {
-            for (int iloscProb = 3; iloscProb > 0; iloscProb--)
+            for (int attempts = 3; attempts > 0; attempts--)
             {
-                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = MetodyPomocnicze::wczytajLinie();
+                cout << "Podaj haslo. Pozostalo prob: " << attempts << ": ";
+                password = AdditionalMethods::loadLine();
 
-                if (uzytkownicy[i].pobierzHaslo() == haslo)
+                if (users[i].getPassword() == password)
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
+                    loggedInUserID = users[i].getId();
 
                     return;
                 }
@@ -102,39 +114,39 @@ void UserManager::logowanieUzytkownika()
     return;
 }
 
-void UserManager::zmianaHaslaZalogowanegoUzytkownika()
+void UserManager::changePasswordLoggedInUser()
 {
-    cout << idZalogowanegoUzytkownika <<endl;
-    string noweHaslo = "";
+    cout << loggedInUserID <<endl;
+    string newPassword = "";
     cout << "Podaj nowe haslo: ";
-    noweHaslo = MetodyPomocnicze::wczytajLinie();
+    newPassword = AdditionalMethods::loadLine();
 
-    for (int i = 0; i < uzytkownicy.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
-        if (uzytkownicy[i].pobierzId() == idZalogowanegoUzytkownika)
+        if (users[i].getId() == loggedInUserID)
         {
-            uzytkownicy[i].ustawHaslo(noweHaslo);
+            users[i].setPassword(newPassword);
             cout << "Haslo zostalo zmienione." << endl << endl;
             system("pause");
         }
     }
-    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+//    xmlFileWithUsers.addAllUsersToFile(users);
 }
-void UserManager::wylogowanieUzytkownika()
+void UserManager::logOut()
 {
-    idZalogowanegoUzytkownika = 0;
+    loggedInUserID = 0;
     cout << endl << "Wylogowales sie!" << endl << endl;
 }
 
-bool UserManager::czyUzytkownikJestZalogowany()
+bool UserManager::isLogIn()
 {
-    if(idZalogowanegoUzytkownika > 0)
+    if(loggedInUserID > 0)
         return true;
     else
         return false;
 }
 
-int UserManager::pobierzIdZalogowanegoUzytkownika()
+int UserManager::getLoggedInUserID()
 {
-    return idZalogowanegoUzytkownika;
+    return loggedInUserID;
 }
