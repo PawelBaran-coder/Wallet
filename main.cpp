@@ -7,11 +7,10 @@ int main()
 {
 
 
-    WalletManager walletManager("uzytkownicy.xml");
+    WalletManager walletManager("users.xml");
 
     walletManager.registration();
     walletManager.displayAllUsers();
 
-    cout << "Hello world!" << endl;
     return 0;
 }

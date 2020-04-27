@@ -30,7 +30,7 @@ public:
         : xmlFileWithUsers(fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
     {
         loggedInUserID = 0;
-        //users = xmlFileWithUsers.loadUsersFromFile();
+        users = xmlFileWithUsers.loadUsersFromFile();
     }
 
     void registration();

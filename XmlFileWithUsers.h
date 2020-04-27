@@ -28,8 +28,7 @@ public:
     void addUserToFile(User user);
     void zapiszWszystkichUzytkownikowDoPliku(vector <User> &users);
     //void addAllUsersToFile(vector <User> &users);
-    vector <User> wczytajUzytkownikowZPliku();
-    //vector <User> loadUsersFromFile();
+    vector <User> loadUsersFromFile();
 
 };
 #endif

@@ -12,26 +12,6 @@ string XmlFileWithUsers::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiK
     return liniaZDanymiUzytkownika;
 }
 
-vector <User> XmlFileWithUsers::wczytajUzytkownikowZPliku()
-{
-    User user;
-    vector <User> users;
-    fstream xmlFile;
-    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-
-    xmlFile.open(getFileName().c_str(), ios::in);
-
-    if (xmlFile.good() == true)
-    {
-        while (getline(xmlFile, daneJednegoUzytkownikaOddzielonePionowymiKreskami))
-        {
-            user = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
-            users.push_back(user);
-        }
-        xmlFile.close();
-    }
-    return users;
-}
 
 User XmlFileWithUsers::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
 {
@@ -69,7 +49,6 @@ User XmlFileWithUsers::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzi
 //---------------------------------------------
 void XmlFileWithUsers::addUserToFile(User user)
 {
-
     int userId = user.getId();
     string name = user.getName();
     string lastName = user.getLastName();
@@ -97,6 +76,41 @@ void XmlFileWithUsers::addUserToFile(User user)
     xml.AddElem("password", password);
 
     xml.Save(getFileName().c_str());
-
 }
 
+vector <User> XmlFileWithUsers::loadUsersFromFile()
+{
+    User user;
+    vector <User> users;
+
+    CMarkup xml;
+
+    bool fileExists = xml.Load( "users.xml" );
+
+    if (!fileExists)
+    {
+        cout <<"nie mozna otworzyc pliku" << endl;
+    }
+
+    xml.FindElem();
+    xml.IntoElem();
+    while ( xml.FindElem("User") )
+    {
+        xml.IntoElem();
+        xml.FindElem( "userId" );
+        user.setId(atoi( MCD_2PCSZ(xml.GetData()) ));
+        xml.FindElem( "name" );
+        user.setName(xml.GetData());
+        xml.FindElem( "lastName" );
+        user.setLastName(xml.GetData());
+        xml.FindElem( "nick" );
+        user.setNick(xml.GetData());
+        xml.FindElem( "password" );
+        user.setPassword(xml.GetData());
+
+        users.push_back(user);
+        xml.OutOfElem();
+    }
+
+    return users;
+}
