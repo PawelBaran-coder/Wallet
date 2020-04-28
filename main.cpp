@@ -11,6 +11,9 @@ int main()
 
     walletManager.registration();
     walletManager.displayAllUsers();
+    walletManager.logIn();
+    walletManager.changePasswordLoggedInUser();
+    //walletManager.logOut();
 
     return 0;
 }

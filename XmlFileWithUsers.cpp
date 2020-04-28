@@ -26,7 +26,7 @@ void XmlFileWithUsers::addUserToFile(User user)
     xml.AddElem("userId", userId);
     xml.AddElem("name", name);
     xml.AddElem("lastName", lastName);
-    xml.AddElem("nick", lastName);
+    xml.AddElem("nick", nick);
     xml.AddElem("password", password);
 
     xml.Save(getFileName().c_str());
@@ -39,7 +39,7 @@ vector <User> XmlFileWithUsers::loadUsersFromFile()
 
     CMarkup xml;
 
-    bool fileExists = xml.Load( "users.xml" );
+    bool fileExists = xml.Load(getFileName().c_str());
 
     if (!fileExists)
     {
@@ -67,4 +67,26 @@ vector <User> XmlFileWithUsers::loadUsersFromFile()
     }
 
     return users;
+}
+
+void XmlFileWithUsers::addAllUsersToFile(vector <User> &users)
+{
+    CMarkup xml;
+
+    xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+    xml.AddElem("Users");
+    xml.IntoElem();
+    for ( int i=0; i<users.size(); ++i )
+    {
+        xml.AddElem( "User" );
+        xml.IntoElem();
+        xml.AddElem( "userId", users[i].getId() );
+        xml.AddElem( "name", users[i].getName() );
+        xml.AddElem( "lastName", users[i].getLastName() );
+        xml.AddElem( "nick", users[i].getNick() );
+        xml.AddElem( "password", users[i].getPassword() );
+        xml.OutOfElem();
+    }
+
+    xml.Save(getFileName().c_str());
 }

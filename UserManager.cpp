@@ -130,7 +130,7 @@ void UserManager::changePasswordLoggedInUser()
             system("pause");
         }
     }
-//    xmlFileWithUsers.addAllUsersToFile(users);
+    xmlFileWithUsers.addAllUsersToFile(users);
 }
 void UserManager::logOut()
 {
