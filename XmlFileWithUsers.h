@@ -23,7 +23,7 @@ public:
     {}
 
     void addUserToFile(User user);
-    //void addAllUsersToFile(vector <User> &users);
+    void addAllUsersToFile(vector <User> &users);
     vector <User> loadUsersFromFile();
 
 };
