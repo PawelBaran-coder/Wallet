@@ -3,12 +3,6 @@
 
 void XmlFileWithUsers::addUserToFile(User user)
 {
-    int userId = user.getId();
-    string name = user.getName();
-    string lastName = user.getLastName();
-    string nick = user.getNick();
-    string password = user.getPassword();
-
     CMarkup xml;
 
     bool fileExists = xml.Load(getFileName().c_str());
@@ -23,11 +17,11 @@ void XmlFileWithUsers::addUserToFile(User user)
     xml.IntoElem();
     xml.AddElem("User");
     xml.IntoElem();
-    xml.AddElem("userId", userId);
-    xml.AddElem("name", name);
-    xml.AddElem("lastName", lastName);
-    xml.AddElem("nick", nick);
-    xml.AddElem("password", password);
+    xml.AddElem("userId", user.getId());
+    xml.AddElem("name", user.getName());
+    xml.AddElem("lastName", user.getLastName());
+    xml.AddElem("nick", user.getNick());
+    xml.AddElem("password", user.getPassword());
 
     xml.Save(getFileName().c_str());
 }
@@ -65,7 +59,6 @@ vector <User> XmlFileWithUsers::loadUsersFromFile()
         users.push_back(user);
         xml.OutOfElem();
     }
-
     return users;
 }
 
@@ -87,6 +80,5 @@ void XmlFileWithUsers::addAllUsersToFile(vector <User> &users)
         xml.AddElem( "password", users[i].getPassword() );
         xml.OutOfElem();
     }
-
     xml.Save(getFileName().c_str());
 }
