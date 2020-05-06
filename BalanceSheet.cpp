@@ -1,0 +1,92 @@
+#include "BalanceSheet.h"
+
+void BalanceSheet::addIncome()
+{
+    Income income;
+    system("cls");
+    cout << " >>> DODAWANIE PRZYCHODU <<<" << endl << endl;
+
+    income = enterNewIncomeData();
+    incomes.push_back(income);
+    xmlFileIncomes.addIncomeToFile(income);
+
+    cout << endl;
+    cout << "Nowy przychod zostal dodany" << endl;
+    system("pause");
+}
+
+Income BalanceSheet::enterNewIncomeData()
+{
+    Income income;
+
+    income.setIncomeId(getNewIncomeId());
+    income.setUserId(LOGGED_IN_USER_ID);
+
+    //cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
+    cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
+//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
+    income.setIncomeDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
+
+    cout << "Podaj warosc przychodu: ";
+//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC ZAPISANEJ KWOTY
+    income.setIncomeAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
+
+    cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
+
+    income.setDescription(AdditionalMethods::loadLine());
+
+    return income;
+}
+int BalanceSheet::getNewIncomeId()
+{
+    if (incomes.empty() == true)
+        return 1;
+    else
+        return incomes.back().getIncomeId() + 1;
+}
+void BalanceSheet::displayAllIncome()
+{
+    system("cls");
+    if (!incomes.empty())
+    {
+        cout << "             >>> INCOMES <<<" << endl;
+       cout << "-----------------------------------------------" << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+        {
+            //wyswietlDaneAdresata(*itr);
+            displayIncome(*itr);
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << endl << "Ksiazka przychodow jest pusta." << endl << endl;
+    }
+    system("pause");
+}
+void BalanceSheet::displayIncome(Income income)
+{
+    cout << endl << "Id:                 " << income.getIncomeId() << endl;
+    cout << "Id uzytkownika:               " << income.getUserId() << endl;
+    cout << "data przychodu:           " << income.getIncomeDate() << endl;
+    cout << "wartosc przychodu:     " << income.getIncomeAmount() << endl;
+    cout << "opis:              " << income.getDescription() << endl;
+
+}
+
+void BalanceSheet::displayAllIncomes1()
+{
+    cout << "proba odczytania wektora" << endl;
+    cout << incomes.size() << endl;
+    system("pause");
+   for (int i = 0; i < incomes.size(); i++)
+    {
+        cout << incomes[i].getIncomeId() << endl;
+        cout << incomes[i].getUserId() << endl;
+        cout << incomes[i].getIncomeDate() << endl;
+        cout << incomes[i].getIncomeAmount() << endl;
+        cout << incomes[i].getDescription() << endl;
+    }
+
+
+}

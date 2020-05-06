@@ -7,13 +7,17 @@ int main()
 {
 
 
-    WalletManager walletManager("users.xml");
+    WalletManager walletManager("users.xml", "incomes.xml");
 
-    walletManager.registration();
+    //walletManager.registration();
     walletManager.displayAllUsers();
     walletManager.logIn();
-    walletManager.changePasswordLoggedInUser();
-    //walletManager.logOut();
+     //walletManager.displayAllIncomes1();
+    walletManager.addIncome();
+    //walletManager.displayAllIncome();
+
+    //walletManager.changePasswordLoggedInUser();
+    walletManager.logOut();
 
     return 0;
 }

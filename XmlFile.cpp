@@ -5,12 +5,12 @@ string XmlFile::getFileName()
 {
     return FILE_NAME_USERS;
 }
-/*
+
 string XmlFile::getIncomesFileName()
 {
     return FILE_NAME_INCOMES;
 }
-
+/*
 string XmlFile::getExpensesFileName()
 {
     return FILE_NAME_EXPENSES;

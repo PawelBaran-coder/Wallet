@@ -87,4 +87,43 @@ string AdditionalMethods::loadLine()
     getline(cin, lineIn);
     return lineIn;
 }
+int AdditionalMethods::convertStringDateToIntegerDate(string dateStringDash)
+{
+    dateStringDash = "";
+    string dateStringNotDash = "";
+    string dateElement ="";
+    int dateInt = 0;
 
+    char separator = '-';
+
+    stringstream ss(dateStringDash);
+
+    while (getline(ss, dateElement, separator))
+    {
+        dateStringNotDash += dateElement;
+    }
+
+    dateInt = atoi(dateStringNotDash.c_str());
+
+    return dateInt;
+}
+
+float AdditionalMethods::correctAmount(string amount)
+{
+    stringstream ss;
+
+    float amountFloat = 0;
+
+    for (int i = 0 ; i <= amount.length() ; i ++ )
+    {
+        if (amount[i] == ',')
+        {
+            amount[i] = '.';
+        }
+    }
+    ss << amount;
+    ss >> amountFloat;
+    //cout << "twoja liczba jako float: " << liczbaFloat << endl;
+
+    return amountFloat;
+}
