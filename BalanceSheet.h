@@ -11,6 +11,7 @@
 //#include "Expense.h"
 #include "XmlFileIncomes.h"
 //#include "XmlFileExpenses.h"
+#include "CurrentDate.h"
 
 using namespace std;
 

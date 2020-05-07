@@ -2,6 +2,8 @@
 #define CURRENTDATE_H
 
 #include <iostream>
+#include <windows.h>
+#include <winbase.h>
 
 using namespace std;
 
@@ -13,16 +15,13 @@ class CurrentDate
     int currentDaysInMonth;
     int currentDateInt;
     string currentDateStr;
+    void setCurrentDate();
 
 public:
 
-    void setCurrentYear(int newCurrentYear);
-    void setCurrentMonth(int newCurrentMonth);
-    void setCurrentDay(int newCurrentDay);
-
     int getCurrentYear();
     int getCurrentMonth();
-
+    int getCurrentDay();
 
 };
 
