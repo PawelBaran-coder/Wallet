@@ -21,18 +21,19 @@ class UserManager
 
     User enterNewUserData();
     int getNewUserID();
-    int getLoggedInUserID();
+
     bool isNick(string nick);
 
 public:
 
-    UserManager(string fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
-        : xmlFileWithUsers(fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
+    UserManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
+        : xmlFileWithUsers(fileNameUsers, fileNameIncomes/*, string fileNameExpenses*/)
     {
         loggedInUserID = 0;
         users = xmlFileWithUsers.loadUsersFromFile();
     }
 
+    int getLoggedInUserID();
     void registration();
     void logIn();
     void logOut();

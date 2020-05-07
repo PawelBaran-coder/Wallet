@@ -22,8 +22,10 @@ public:
 
     static string loadLine();
     static bool isDateCorrect();
-    static bool isAmountCorrect();
-    static int convertStringDateToIntegerDate();
+    static float correctAmount(string amount);
+    static int convertStringDateToIntegerDate(string dateStringDash);
     static string convertIntegerDateToStringDate();
+    static string convertFloatToString(float amount);
+    static float convertStringToFloat(string amount);
 };
 #endif

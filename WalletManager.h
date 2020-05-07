@@ -4,31 +4,32 @@
 #include <iostream>
 #include <windows.h>
 #include "UserManager.h"
+#include "BalanceSheet.h"
 
 using namespace std;
 
 class WalletManager
 {
     UserManager userManager;
-   // BalanceSheet *balanceSheet;
+    BalanceSheet *balanceSheet;
 
    const string FILE_NAME_USERS;
-   //const string FILE_NAME_INCOMES;
-   //const string FILE_NAME_EXPENSES;
+   const string FILE_NAME_INCOMES;
+   const string FILE_NAME_EXPENSES;
 
 public:
 
-WalletManager(string fileNameUsers/*, string fileNameIncomes, string fileNameExpenses*/)
-        : userManager(fileNameUsers/*, fileNameIncomes, fileNameExpenses*/) /*,FILE_NAME_INCOMES(fileNameIncomes), FILE_NAME_EXPENSES(fileNameExpenses)*/
+WalletManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
+        : userManager(fileNameUsers, fileNameIncomes/*, fileNameExpenses*/), FILE_NAME_INCOMES(fileNameIncomes)/*, FILE_NAME_EXPENSES(fileNameExpenses)*/
     {
-        // BalanceSheet = NULL;
+        balanceSheet = NULL;
     }
-   /* ~WalletManager()
+    ~WalletManager()
     {
-        delete BalanceSheet;
-        BalanceSheet = NULL;
+        delete balanceSheet;
+        balanceSheet = NULL;
     }
-*/
+
     void registration();
     void displayAllUsers();
     void logIn();
@@ -36,7 +37,10 @@ WalletManager(string fileNameUsers/*, string fileNameIncomes, string fileNameExp
     void changePasswordLoggedInUser();
     bool isLogIn();
 
+    void addIncome();
 
+    void displayAllIncome();
+    void displayAllIncomes1();
 };
 
 
