@@ -12,7 +12,7 @@ int main()
     //walletManager.registration();
     walletManager.displayAllUsers();
     walletManager.logIn();
-     //walletManager.displayAllIncomes1();
+    walletManager.displayAllIncomes1();
     walletManager.addIncome();
     //walletManager.displayAllIncome();
 

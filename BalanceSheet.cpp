@@ -3,7 +3,7 @@
 void BalanceSheet::addIncome()
 {
     Income income;
-    system("cls");
+    //system("cls");
     cout << " >>> DODAWANIE PRZYCHODU <<<" << endl << endl;
 
     income = enterNewIncomeData();
@@ -35,6 +35,13 @@ Income BalanceSheet::enterNewIncomeData()
 
     income.setDescription(AdditionalMethods::loadLine());
 
+    cout << "dodane do wektora" << endl;
+    cout << endl << "Id:        " << income.getIncomeId() << endl;
+    cout << "Id uzytkownika:    " << income.getUserId() << endl;
+    cout << "data przychodu:    " << income.getIncomeDate() << endl;
+    cout << "wartosc przychodu: " << income.getIncomeAmount() << endl;
+    cout << "opis:              " << income.getDescription() << endl;
+    system("pause");
     return income;
 }
 int BalanceSheet::getNewIncomeId()
@@ -50,7 +57,7 @@ void BalanceSheet::displayAllIncome()
     if (!incomes.empty())
     {
         cout << "             >>> INCOMES <<<" << endl;
-       cout << "-----------------------------------------------" << endl;
+        cout << "-----------------------------------------------" << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
             //wyswietlDaneAdresata(*itr);
@@ -79,14 +86,14 @@ void BalanceSheet::displayAllIncomes1()
     cout << "proba odczytania wektora" << endl;
     cout << incomes.size() << endl;
     system("pause");
-   for (int i = 0; i < incomes.size(); i++)
+    for (int i = 0; i < incomes.size(); i++)
     {
-        cout << incomes[i].getIncomeId() << endl;
         cout << incomes[i].getUserId() << endl;
-        cout << incomes[i].getIncomeDate() << endl;
+        cout << incomes[i].getIncomeId() << endl;
         cout << incomes[i].getIncomeAmount() << endl;
+        cout << incomes[i].getIncomeDate() << endl;
         cout << incomes[i].getDescription() << endl;
     }
-
+ system("pause");
 
 }

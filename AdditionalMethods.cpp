@@ -89,7 +89,6 @@ string AdditionalMethods::loadLine()
 }
 int AdditionalMethods::convertStringDateToIntegerDate(string dateStringDash)
 {
-    dateStringDash = "";
     string dateStringNotDash = "";
     string dateElement ="";
     int dateInt = 0;
@@ -126,4 +125,25 @@ float AdditionalMethods::correctAmount(string amount)
     //cout << "twoja liczba jako float: " << liczbaFloat << endl;
 
     return amountFloat;
+}
+
+string AdditionalMethods::convertFloatToString(float amount)
+{
+    stringstream FloatToStr;
+    string stringAmount;
+
+    FloatToStr << amount;
+    FloatToStr >> stringAmount;
+
+    return stringAmount;
+}
+float AdditionalMethods::convertStringToFloat(string amount)
+{
+	stringstream stringToFloat;
+	float floatAmount;
+
+	stringToFloat << amount;
+	stringToFloat >> floatAmount;
+
+    return floatAmount;
 }
