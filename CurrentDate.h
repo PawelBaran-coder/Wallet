@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <winbase.h>
 
+
 using namespace std;
 
 class CurrentDate
@@ -12,16 +13,25 @@ class CurrentDate
     int currentYear;
     int currentMonth;
     int currentDay;
-    int currentDaysInMonth;
+    string currentYearStr;
+    string currentMonthStr;
+    string currentDayStr;
+    //int currentDaysInMonth;
     int currentDateInt;
     string currentDateStr;
-    void setCurrentDate();
+    string convertIntYearToString();
+    string convertIntMonthToString();
+    string convertIntDayToString();
+    void convertCurrentDateStringElementsToInt();
 
 public:
+
+    CurrentDate();
 
     int getCurrentYear();
     int getCurrentMonth();
     int getCurrentDay();
+    int getCurrentDateInt();
 
 };
 

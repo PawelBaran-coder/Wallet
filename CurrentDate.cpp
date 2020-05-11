@@ -1,21 +1,7 @@
 #include "CurrentDate.h"
+#include "AdditionalMethods.h"
 
-int CurrentDate::getCurrentYear()
-{
-    setCurrentDate();
-    return currentYear;
-}
-int CurrentDate::getCurrentMonth()
-{
-    setCurrentDate();
-    return currentMonth;
-}
-int CurrentDate::getCurrentDay()
-{
-    setCurrentDate();
-    return currentDay;
-}
-void CurrentDate::setCurrentDate()
+CurrentDate::CurrentDate()
 {
     SYSTEMTIME st;
     GetSystemTime(&st);
@@ -23,4 +9,49 @@ void CurrentDate::setCurrentDate()
     currentYear = st.wYear;
     currentMonth = st.wMonth;
     currentDay = st.wDay;
+}
+int CurrentDate::getCurrentYear()
+{
+    return currentYear;
+}
+int CurrentDate::getCurrentMonth()
+{
+    return currentMonth;
+}
+int CurrentDate::getCurrentDay()
+{
+    return currentDay;
+}
+string CurrentDate::convertIntYearToString()
+{
+    currentYearStr = AdditionalMethods::convertIntegerToString(currentYear);
+    return currentYearStr;
+}
+string CurrentDate::convertIntMonthToString()
+{
+    currentMonthStr = AdditionalMethods::convertIntegerToString(currentMonth);
+    if (currentMonth < 10)
+    {
+        currentMonthStr = "0" + AdditionalMethods::convertIntegerToString(currentMonth);
+    }
+    return currentMonthStr;
+}
+string CurrentDate::convertIntDayToString()
+{
+    currentDayStr = AdditionalMethods::convertIntegerToString(currentDay);
+    if (currentDay < 10)
+    {
+        currentDayStr = "0" + AdditionalMethods::convertIntegerToString(currentDay);
+    }
+    return currentDayStr;
+}
+void CurrentDate::convertCurrentDateStringElementsToInt()
+{
+    currentDateStr = convertIntYearToString() + convertIntMonthToString() + convertIntDayToString();
+    currentDateInt = AdditionalMethods::convertStringToInteger(currentDateStr);
+}
+int CurrentDate::getCurrentDateInt()
+{
+    convertCurrentDateStringElementsToInt();
+    return currentDateInt;
 }

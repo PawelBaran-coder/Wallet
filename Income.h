@@ -8,9 +8,9 @@ using namespace std;
 class Income
 {
     //Date date;
-    int incomeDate;
     int incomeId;
     int userId;
+    int incomeDate;
     float incomeAmount;
     string description;
 

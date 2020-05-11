@@ -122,7 +122,6 @@ float AdditionalMethods::correctAmount(string amount)
     }
     ss << amount;
     ss >> amountFloat;
-    //cout << "twoja liczba jako float: " << liczbaFloat << endl;
 
     return amountFloat;
 }
@@ -139,11 +138,27 @@ string AdditionalMethods::convertFloatToString(float amount)
 }
 float AdditionalMethods::convertStringToFloat(string amount)
 {
-	stringstream stringToFloat;
-	float floatAmount;
+    stringstream stringToFloat;
+    float floatAmount;
 
-	stringToFloat << amount;
-	stringToFloat >> floatAmount;
+    stringToFloat << amount;
+    stringToFloat >> floatAmount;
 
     return floatAmount;
+}
+string AdditionalMethods::convertIntegerToString(int integerNumber)
+{
+    ostringstream integerToString;
+    integerToString << integerNumber;
+    string stringNumber = integerToString.str();
+    return stringNumber;
+}
+
+int AdditionalMethods::convertStringToInteger(string stringNumber)
+{
+    int integerNumber;
+    istringstream stringToInteger(stringNumber);
+    stringToInteger >> integerNumber;
+
+    return integerNumber;
 }

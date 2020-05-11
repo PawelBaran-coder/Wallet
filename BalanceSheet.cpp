@@ -24,7 +24,8 @@ Income BalanceSheet::enterNewIncomeData()
     income.setIncomeId(getNewIncomeId());
     income.setUserId(LOGGED_IN_USER_ID);
 
-
+    cout << "Podaj warosc przychodu: ";
+    income.setIncomeAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
 
     cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
     cin >> answer;
@@ -37,30 +38,18 @@ Income BalanceSheet::enterNewIncomeData()
     }
     if (answer == 'n')
     {
-       cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
+        cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
 //NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
-    income.setIncomeDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
+        income.setIncomeDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
     }
 
     if (answer == 't')
     {
-        cout << "dzisiejsza data to: " << endl;
-        cout << "rok: " << currentdate.getCurrentYear() << endl;
-        cout << "miesiac: " << currentdate.getCurrentMonth() << endl;
-        cout << "dzien: " << currentdate.getCurrentDay() << endl;
+        cout << "dzisiejsza data to: " << currentdate.getCurrentDateInt() << endl;
+        income.setIncomeDate(currentdate.getCurrentDateInt() );
     }
 
-system("pause");
-
-
-
-
-
-
-
-    cout << "Podaj warosc przychodu: ";
-//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC ZAPISANEJ KWOTY
-    income.setIncomeAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
+    cin.ignore();
 
     cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
 
@@ -91,7 +80,6 @@ void BalanceSheet::displayAllIncome()
         cout << "-----------------------------------------------" << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            //wyswietlDaneAdresata(*itr);
             displayIncome(*itr);
         }
         cout << endl;
@@ -114,8 +102,8 @@ void BalanceSheet::displayIncome(Income income)
 
 void BalanceSheet::displayAllIncomes1()
 {
-    cout << "proba odczytania wektora" << endl;
-    cout << incomes.size() << endl;
+    cout << "odczytane z wektora" << endl;
+    cout << " liczba zapisanych przychodow w wektorze: " << incomes.size() << endl;
     system("pause");
     for (int i = 0; i < incomes.size(); i++)
     {
