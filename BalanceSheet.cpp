@@ -18,18 +18,38 @@ void BalanceSheet::addIncome()
 Income BalanceSheet::enterNewIncomeData()
 {
     Income income;
+    CurrentDate currentdate;
+    char answer;
 
     income.setIncomeId(getNewIncomeId());
     income.setUserId(LOGGED_IN_USER_ID);
 
-    //cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
-    cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
-//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
-    income.setIncomeDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
-
     cout << "Podaj warosc przychodu: ";
-//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC ZAPISANEJ KWOTY
     income.setIncomeAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
+
+    cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
+    cin >> answer;
+
+    while (answer != 'n' && answer != 't')
+    {
+        cout << "podales nieprawidlowa litere" << endl;
+        cout << "podaj ponownie odpowiedz: TAK (t) lub NIE (n)" << endl;
+        cin >> answer;
+    }
+    if (answer == 'n')
+    {
+        cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
+//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
+        income.setIncomeDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
+    }
+
+    if (answer == 't')
+    {
+        cout << "dzisiejsza data to: " << currentdate.getCurrentDateInt() << endl;
+        income.setIncomeDate(currentdate.getCurrentDateInt() );
+    }
+
+    cin.ignore();
 
     cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
 
@@ -60,7 +80,6 @@ void BalanceSheet::displayAllIncome()
         cout << "-----------------------------------------------" << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            //wyswietlDaneAdresata(*itr);
             displayIncome(*itr);
         }
         cout << endl;
@@ -83,8 +102,8 @@ void BalanceSheet::displayIncome(Income income)
 
 void BalanceSheet::displayAllIncomes1()
 {
-    cout << "proba odczytania wektora" << endl;
-    cout << incomes.size() << endl;
+    cout << "odczytane z wektora" << endl;
+    cout << " liczba zapisanych przychodow w wektorze: " << incomes.size() << endl;
     system("pause");
     for (int i = 0; i < incomes.size(); i++)
     {
@@ -94,6 +113,6 @@ void BalanceSheet::displayAllIncomes1()
         cout << incomes[i].getIncomeDate() << endl;
         cout << incomes[i].getDescription() << endl;
     }
- system("pause");
+    system("pause");
 
 }

@@ -73,7 +73,6 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
     {
         cout <<"nie mozna otworzyc pliku" << endl;
         system("pause");
-
     }
 
     xml.FindElem();
@@ -105,8 +104,6 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
         xml.OutOfElem();
 
     }
-    cout << "jestes po wczytaniu przychodow z pliku" << endl;
     system("pause");
     return incomes;
-
 }

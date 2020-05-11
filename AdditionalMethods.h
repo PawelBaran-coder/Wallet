@@ -27,5 +27,7 @@ public:
     static string convertIntegerDateToStringDate();
     static string convertFloatToString(float amount);
     static float convertStringToFloat(string amount);
+    static string convertIntegerToString(int integerNumber);
+    static int convertStringToInteger(string stringNumber);
 };
 #endif
