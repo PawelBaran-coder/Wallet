@@ -6,6 +6,9 @@
 #include <windows.h>
 #include <sstream>
 #include <fstream>
+#include<cstdlib>
+#include<iomanip>
+#include<algorithm>
 
 #include "Income.h"
 //#include "Expense.h"
@@ -30,6 +33,7 @@ class BalanceSheet
     //float accountBalance;
     Income enterNewIncomeData();
     int getNewIncomeId();
+
     /*
     Adresat podajDaneNowegoAdresata();
     int podajIdWybranegoAdresata();
@@ -53,6 +57,7 @@ public:
     void displayIncome(Income income);
     void displayAllIncome();
     void displayAllIncomes1();
+    void sortIncome();
 };
 
 

@@ -41,6 +41,7 @@ WalletManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExp
 
     void displayAllIncome();
     void displayAllIncomes1();
+    void sortIncomeDate();
 };
 
 

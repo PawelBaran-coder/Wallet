@@ -12,10 +12,10 @@ int main()
     //walletManager.registration();
     walletManager.displayAllUsers();
     walletManager.logIn();
-    walletManager.displayAllIncomes1();
-    walletManager.addIncome();
+    //walletManager.displayAllIncomes1();
+    //walletManager.addIncome();
     //walletManager.displayAllIncome();
-
+    walletManager.sortIncomeDate();
     //walletManager.changePasswordLoggedInUser();
     walletManager.logOut();
 

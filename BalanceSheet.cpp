@@ -36,8 +36,10 @@ Income BalanceSheet::enterNewIncomeData()
         cout << "podaj ponownie odpowiedz: TAK (t) lub NIE (n)" << endl;
         cin >> answer;
     }
+
     if (answer == 'n')
     {
+        cin.ignore();
         cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
 //NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
         income.setIncomeDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
@@ -45,11 +47,10 @@ Income BalanceSheet::enterNewIncomeData()
 
     if (answer == 't')
     {
+        cin.ignore();
         cout << "dzisiejsza data to: " << currentdate.getCurrentDateInt() << endl;
         income.setIncomeDate(currentdate.getCurrentDateInt() );
     }
-
-    cin.ignore();
 
     cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
 
@@ -104,7 +105,7 @@ void BalanceSheet::displayAllIncomes1()
 {
     cout << "odczytane z wektora" << endl;
     cout << " liczba zapisanych przychodow w wektorze: " << incomes.size() << endl;
-    system("pause");
+
     for (int i = 0; i < incomes.size(); i++)
     {
         cout << incomes[i].getUserId() << endl;
@@ -112,6 +113,24 @@ void BalanceSheet::displayAllIncomes1()
         cout << incomes[i].getIncomeAmount() << endl;
         cout << incomes[i].getIncomeDate() << endl;
         cout << incomes[i].getDescription() << endl;
+    }
+    system("pause");
+
+}
+
+void BalanceSheet::sortIncome()
+
+{
+    //Income income;
+    sort( incomes.begin(), incomes.end() );
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+
+        cout << "ID: " << incomes[i].getIncomeId() << endl;
+        //cout << incomes[i].getIncomeAmount() << endl;
+        cout << "data: " << incomes[i].getIncomeDate() << endl;
+        //cout << incomes[i].getDescription() << endl;
     }
     system("pause");
 

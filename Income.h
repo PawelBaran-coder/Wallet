@@ -14,8 +14,15 @@ class Income
     float incomeAmount;
     string description;
 
+
+
 public:
 
+bool operator < (const Income &x)const //zdefiniowanie zachowania siê
+    {
+        //operatora < potrzebnego przy sortowaniu
+        return incomeDate < x.incomeDate;
+    }
     void setIncomeDate (int newIncomeDate);
     void setIncomeId(int newIncomeId);
     void setUserId(int newUserId);
