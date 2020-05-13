@@ -4,8 +4,8 @@
 #include <iostream>
 #include <windows.h>
 #include <winbase.h>
-
-
+#include "AdditionalMethods.h"
+//#include "Date.h"
 using namespace std;
 
 class CurrentDate
@@ -32,6 +32,7 @@ public:
     int getCurrentMonth();
     int getCurrentDay();
     int getCurrentDateInt();
+    int firstDayCurrentMonth();
 
 };
 

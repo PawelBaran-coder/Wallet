@@ -58,6 +58,8 @@ public:
     void displayAllIncome();
     void displayAllIncomes1();
     void sortIncome();
+    void displayIncomesCurrentMonth();
+    void displayIncomesPreviousMonth();
 };
 
 

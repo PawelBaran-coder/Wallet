@@ -15,7 +15,8 @@ int main()
     //walletManager.displayAllIncomes1();
     //walletManager.addIncome();
     //walletManager.displayAllIncome();
-    walletManager.sortIncomeDate();
+    //walletManager.sortIncomeDate();
+    walletManager.displayIncomesCurrentMonth();
     //walletManager.changePasswordLoggedInUser();
     walletManager.logOut();
 

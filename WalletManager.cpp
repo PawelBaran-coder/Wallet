@@ -83,3 +83,15 @@ void WalletManager::sortIncomeDate()
         system("pause");
     }
 }
+void WalletManager::displayIncomesCurrentMonth()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayIncomesCurrentMonth();
+    }
+    else
+    {
+        cout << "Aby wyswietlic przychody biezacego miesiaca, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}

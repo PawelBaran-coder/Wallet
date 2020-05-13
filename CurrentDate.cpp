@@ -55,3 +55,10 @@ int CurrentDate::getCurrentDateInt()
     convertCurrentDateStringElementsToInt();
     return currentDateInt;
 }
+int CurrentDate::firstDayCurrentMonth()
+{
+    string firstDayNumber = "01";
+    string firstDayStr = convertIntYearToString() + convertIntMonthToString() + firstDayNumber;
+    int firstDayInt = AdditionalMethods::convertStringToInteger(firstDayStr);
+    return firstDayInt;
+}

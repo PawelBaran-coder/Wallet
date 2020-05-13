@@ -135,3 +135,33 @@ void BalanceSheet::sortIncome()
     system("pause");
 
 }
+
+void BalanceSheet::displayIncomesCurrentMonth()
+{
+    CurrentDate currentDate;
+
+    sort( incomes.begin(), incomes.end() );
+
+    int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getIncomeDate() >= firstDayCurrentMonth)
+        {
+            cout << "data: " << incomes[i].getIncomeDate() << endl;
+            cout << "wartosc przychodu: " << incomes[i].getIncomeAmount() << endl;
+        }
+    }
+
+}
+/*
+void BalanceSheet::displayIncomesPreviousMonth()
+{
+    CurrentDate currentDate;
+
+    sort( incomes.begin(), incomes.end() );
+    int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
+    int firstDayPreviousMonth =
+
+}
+*/

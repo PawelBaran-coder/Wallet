@@ -2,10 +2,11 @@
 #define DATE_H
 
 #include <iostream>
+#include "CurrentDate.h"
 
 using namespace std;
 
-class Date
+class Date : public CurrentDate
 {
     int year;
     int month;
@@ -24,6 +25,7 @@ public:
     int getMonth();
     int getDay();
 
+    int firstDayPreviousMonth();
     /*
     int calculateNumberOfDaysInMonth();
     void displayDate();
