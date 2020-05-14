@@ -29,7 +29,7 @@ Income BalanceSheet::enterNewIncomeData()
 
     cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
     cin >> answer;
-
+    // powinno byc: answer = AdditionalMethods::wczytajZnak()
     while (answer != 'n' && answer != 't')
     {
         cout << "podales nieprawidlowa litere" << endl;
@@ -121,7 +121,6 @@ void BalanceSheet::displayAllIncomes1()
 void BalanceSheet::sortIncome()
 
 {
-    //Income income;
     sort( incomes.begin(), incomes.end() );
 
     for (int i = 0; i < incomes.size(); i++)
@@ -140,8 +139,6 @@ void BalanceSheet::displayIncomesCurrentMonth()
 {
     CurrentDate currentDate;
 
-    sort( incomes.begin(), incomes.end() );
-
     int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
 
     for (int i = 0; i < incomes.size(); i++)
@@ -154,14 +151,41 @@ void BalanceSheet::displayIncomesCurrentMonth()
     }
 
 }
-/*
+
 void BalanceSheet::displayIncomesPreviousMonth()
 {
     CurrentDate currentDate;
+    Date date;
 
-    sort( incomes.begin(), incomes.end() );
     int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
-    int firstDayPreviousMonth =
+    int firstDayPreviousMonth = date.firstDayPreviousMonth();
 
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getIncomeDate() < firstDayCurrentMonth && incomes[i].getIncomeDate() >= firstDayPreviousMonth)
+        {
+            cout << "data: " << incomes[i].getIncomeDate() << endl;
+            cout << "wartosc przychodu: " << incomes[i].getIncomeAmount() << endl;
+        }
+    }
 }
-*/
+
+void BalanceSheet::displayIncomesPeriodTime()
+{
+    int startingDate;
+    int endDate;
+
+    cout << "Podaj date poczatkowa w formacie rrrr-mm-dd: ";
+    startingDate = AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+    cout << "Podaj date koncowa w formacie rrrr-mm-dd: ";
+    endDate = AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getIncomeDate() <= endDate && incomes[i].getIncomeDate() >= startingDate)
+        {
+            cout << "data: " << incomes[i].getIncomeDate() << endl;
+            cout << "wartosc przychodu: " << incomes[i].getIncomeAmount() << endl;
+        }
+    }
+}

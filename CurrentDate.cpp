@@ -1,6 +1,6 @@
 #include "CurrentDate.h"
 #include "AdditionalMethods.h"
-
+/*
 CurrentDate::CurrentDate()
 {
     SYSTEMTIME st;
@@ -10,6 +10,7 @@ CurrentDate::CurrentDate()
     currentMonth = st.wMonth;
     currentDay = st.wDay;
 }
+*/
 int CurrentDate::getCurrentYear()
 {
     return currentYear;

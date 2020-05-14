@@ -15,6 +15,7 @@
 #include "XmlFileIncomes.h"
 //#include "XmlFileExpenses.h"
 #include "CurrentDate.h"
+#include "Date.h"
 
 using namespace std;
 
@@ -50,6 +51,7 @@ public:
 
         //incomes = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
         incomes = xmlFileIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
+        sort( incomes.begin(), incomes.end() );
     }
 
     void addIncome();
@@ -60,6 +62,7 @@ public:
     void sortIncome();
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
+    void displayIncomesPeriodTime();
 };
 
 

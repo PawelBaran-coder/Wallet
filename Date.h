@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Date : public CurrentDate
+class Date
 {
     int year;
     int month;
@@ -14,8 +14,13 @@ class Date : public CurrentDate
     int daysInMonth;
     int dateInt;
     string dateStr;
+    //CurrentDate currentDate;
 
 public:
+
+     //CurrentDate currentDate;
+
+    //Date()
 
     void setYear(int newYear);
     void setMonth(int newMonth);

@@ -19,14 +19,20 @@ class CurrentDate
     //int currentDaysInMonth;
     int currentDateInt;
     string currentDateStr;
-    string convertIntYearToString();
-    string convertIntMonthToString();
-    string convertIntDayToString();
+
     void convertCurrentDateStringElementsToInt();
 
 public:
 
-    CurrentDate();
+    CurrentDate()
+    {
+        SYSTEMTIME st;
+        GetSystemTime(&st);
+
+        currentYear = st.wYear;
+        currentMonth = st.wMonth;
+        currentDay = st.wDay;
+    }
 
     int getCurrentYear();
     int getCurrentMonth();
@@ -34,6 +40,9 @@ public:
     int getCurrentDateInt();
     int firstDayCurrentMonth();
 
+    string convertIntYearToString();
+    string convertIntMonthToString();
+    string convertIntDayToString();
 };
 
 #endif
