@@ -27,3 +27,19 @@ int Date::getDay()
 {
     return day;
 }
+
+int Date::firstDayPreviousMonth()
+{
+    CurrentDate currentDate;
+
+    string firstDayNumber = "01";
+    string previousMonthStr = AdditionalMethods::convertIntegerToString(currentDate.getCurrentMonth() - 1);
+    if (currentDate.getCurrentMonth() < 10)
+    {
+        previousMonthStr = "0" + AdditionalMethods::convertIntegerToString(currentDate.getCurrentMonth() - 1);
+    }
+    string firstDayStr = currentDate.convertIntYearToString() + previousMonthStr + firstDayNumber;
+    int firstDayInt = AdditionalMethods::convertStringToInteger(firstDayStr);
+    return firstDayInt;
+}
+

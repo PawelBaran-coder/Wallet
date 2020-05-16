@@ -4,8 +4,8 @@
 #include <iostream>
 #include <windows.h>
 #include <winbase.h>
-
-
+#include "AdditionalMethods.h"
+//#include "Date.h"
 using namespace std;
 
 class CurrentDate
@@ -19,20 +19,30 @@ class CurrentDate
     //int currentDaysInMonth;
     int currentDateInt;
     string currentDateStr;
-    string convertIntYearToString();
-    string convertIntMonthToString();
-    string convertIntDayToString();
+
     void convertCurrentDateStringElementsToInt();
 
 public:
 
-    CurrentDate();
+    CurrentDate()
+    {
+        SYSTEMTIME st;
+        GetSystemTime(&st);
+
+        currentYear = st.wYear;
+        currentMonth = st.wMonth;
+        currentDay = st.wDay;
+    }
 
     int getCurrentYear();
     int getCurrentMonth();
     int getCurrentDay();
     int getCurrentDateInt();
+    int firstDayCurrentMonth();
 
+    string convertIntYearToString();
+    string convertIntMonthToString();
+    string convertIntDayToString();
 };
 
 #endif

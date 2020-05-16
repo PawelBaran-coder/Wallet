@@ -71,3 +71,40 @@ void WalletManager::displayAllIncomes1()
         system("pause");
     }
 }
+
+void WalletManager::displayIncomesCurrentMonth()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayIncomesCurrentMonth();
+    }
+    else
+    {
+        cout << "Aby wyswietlic przychody biezacego miesiaca, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+void WalletManager::displayIncomesPreviousMonth()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayIncomesPreviousMonth();
+    }
+    else
+    {
+        cout << "Aby wyswietlic przychody poprzedniego miesiaca, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+void WalletManager::displayIncomesPeriodTime()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayIncomesPeriodTime();
+    }
+    else
+    {
+        cout << "Aby wyswietlic przychody z zadanego okresu, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}

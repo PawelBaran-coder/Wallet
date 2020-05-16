@@ -3,7 +3,7 @@
 void BalanceSheet::addIncome()
 {
     Income income;
-    //system("cls");
+    system("cls");
     cout << " >>> DODAWANIE PRZYCHODU <<<" << endl << endl;
 
     income = enterNewIncomeData();
@@ -28,7 +28,7 @@ Income BalanceSheet::enterNewIncomeData()
     income.setIncomeAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
 
     cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
-    cin >> answer;
+    answer = AdditionalMethods::loadChar();
 
     while (answer != 'n' && answer != 't')
     {
@@ -36,6 +36,7 @@ Income BalanceSheet::enterNewIncomeData()
         cout << "podaj ponownie odpowiedz: TAK (t) lub NIE (n)" << endl;
         cin >> answer;
     }
+
     if (answer == 'n')
     {
         cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
@@ -49,14 +50,11 @@ Income BalanceSheet::enterNewIncomeData()
         income.setIncomeDate(currentdate.getCurrentDateInt() );
     }
 
-    cin.ignore();
-
     cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
-
     income.setDescription(AdditionalMethods::loadLine());
 
-    cout << "dodane do wektora" << endl;
-    cout << endl << "Id:        " << income.getIncomeId() << endl;
+    cout << "dodane do wektora" << endl << endl;
+    cout << "Id przychodu:      " << income.getIncomeId() << endl;
     cout << "Id uzytkownika:    " << income.getUserId() << endl;
     cout << "data przychodu:    " << income.getIncomeDate() << endl;
     cout << "wartosc przychodu: " << income.getIncomeAmount() << endl;
@@ -97,14 +95,12 @@ void BalanceSheet::displayIncome(Income income)
     cout << "data przychodu:           " << income.getIncomeDate() << endl;
     cout << "wartosc przychodu:     " << income.getIncomeAmount() << endl;
     cout << "opis:              " << income.getDescription() << endl;
-
 }
-
 void BalanceSheet::displayAllIncomes1()
 {
     cout << "odczytane z wektora" << endl;
     cout << " liczba zapisanych przychodow w wektorze: " << incomes.size() << endl;
-    system("pause");
+
     for (int i = 0; i < incomes.size(); i++)
     {
         cout << incomes[i].getUserId() << endl;
@@ -114,5 +110,55 @@ void BalanceSheet::displayAllIncomes1()
         cout << incomes[i].getDescription() << endl;
     }
     system("pause");
+}
+void BalanceSheet::displayIncomesCurrentMonth()
+{
+    CurrentDate currentDate;
 
+    int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getIncomeDate() >= firstDayCurrentMonth)
+        {
+            cout << "data: " << incomes[i].getIncomeDate() << endl;
+            cout << "wartosc przychodu: " << incomes[i].getIncomeAmount() << endl;
+        }
+    }
+}
+void BalanceSheet::displayIncomesPreviousMonth()
+{
+    CurrentDate currentDate;
+    Date date;
+
+    int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
+    int firstDayPreviousMonth = date.firstDayPreviousMonth();
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getIncomeDate() < firstDayCurrentMonth && incomes[i].getIncomeDate() >= firstDayPreviousMonth)
+        {
+            cout << "data: " << incomes[i].getIncomeDate() << endl;
+            cout << "wartosc przychodu: " << incomes[i].getIncomeAmount() << endl;
+        }
+    }
+}
+void BalanceSheet::displayIncomesPeriodTime()
+{
+    int startingDate;
+    int endDate;
+
+    cout << "Podaj date poczatkowa w formacie rrrr-mm-dd: ";
+    startingDate = AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+    cout << "Podaj date koncowa w formacie rrrr-mm-dd: ";
+    endDate = AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getIncomeDate() <= endDate && incomes[i].getIncomeDate() >= startingDate)
+        {
+            cout << "data: " << incomes[i].getIncomeDate() << endl;
+            cout << "wartosc przychodu: " << incomes[i].getIncomeAmount() << endl;
+        }
+    }
 }

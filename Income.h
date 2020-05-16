@@ -7,15 +7,20 @@ using namespace std;
 
 class Income
 {
-    //Date date;
     int incomeId;
     int userId;
     int incomeDate;
     float incomeAmount;
     string description;
 
+
+
 public:
 
+bool operator < (const Income &x)const
+    {
+        return incomeDate < x.incomeDate;
+    }
     void setIncomeDate (int newIncomeDate);
     void setIncomeId(int newIncomeId);
     void setUserId(int newUserId);

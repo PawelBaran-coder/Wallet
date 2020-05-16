@@ -1,15 +1,6 @@
 #include "CurrentDate.h"
 #include "AdditionalMethods.h"
 
-CurrentDate::CurrentDate()
-{
-    SYSTEMTIME st;
-    GetSystemTime(&st);
-
-    currentYear = st.wYear;
-    currentMonth = st.wMonth;
-    currentDay = st.wDay;
-}
 int CurrentDate::getCurrentYear()
 {
     return currentYear;
@@ -54,4 +45,11 @@ int CurrentDate::getCurrentDateInt()
 {
     convertCurrentDateStringElementsToInt();
     return currentDateInt;
+}
+int CurrentDate::firstDayCurrentMonth()
+{
+    string firstDayNumber = "01";
+    string firstDayStr = convertIntYearToString() + convertIntMonthToString() + firstDayNumber;
+    int firstDayInt = AdditionalMethods::convertStringToInteger(firstDayStr);
+    return firstDayInt;
 }
