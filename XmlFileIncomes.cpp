@@ -52,9 +52,9 @@ void XmlFileIncomes::addIncomeToFile(Income income)
     xml.IntoElem();
 
     xml.AddElem("userId", income.getUserId());
-    xml.AddElem("incomeId", income.getIncomeId());
-    xml.AddElem("incomeAmount", AdditionalMethods::convertFloatToString(income.getIncomeAmount()));
-    xml.AddElem("incomeDate", income.getIncomeDate());
+    xml.AddElem("incomeId", income.getId());
+    xml.AddElem("incomeAmount", AdditionalMethods::convertFloatToString(income.getAmount()));
+    xml.AddElem("incomeDate", income.getDate());
     xml.AddElem("description", income.getDescription());
 
     xml.Save(getIncomesFileName().c_str());
@@ -87,13 +87,13 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
             income.setUserId(atoi( MCD_2PCSZ(xml.GetData()) ));
             //cout << "userId: "<< income.getUserId() << endl;
             xml.FindElem( "incomeId" );
-            income.setIncomeId(atoi( MCD_2PCSZ(xml.GetData()) ));
+            income.setId(atoi( MCD_2PCSZ(xml.GetData()) ));
             //cout << "incomeId: "<< income.getIncomeId() << endl;
             xml.FindElem( "incomeAmount" );
-            income.setIncomeAmount(AdditionalMethods::convertStringToFloat(xml.GetData()) );
+            income.setAmount(AdditionalMethods::convertStringToFloat(xml.GetData()) );
             //cout << "incomeAmount: "<< income.getIncomeAmount() << endl;
             xml.FindElem( "incomeDate" );
-            income.setIncomeDate(atoi( MCD_2PCSZ(xml.GetData()) ));
+            income.setDate(atoi( MCD_2PCSZ(xml.GetData()) ));
             //cout << "incomeDate: "<< income.getIncomeDate() << endl;
             xml.FindElem( "description" );
             income.setDescription(xml.GetData());

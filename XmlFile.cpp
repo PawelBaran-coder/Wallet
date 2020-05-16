@@ -10,12 +10,11 @@ string XmlFile::getIncomesFileName()
 {
     return FILE_NAME_INCOMES;
 }
-/*
+
 string XmlFile::getExpensesFileName()
 {
     return FILE_NAME_EXPENSES;
 }
-*/
 
 /*
 bool XmlFile::isEmpty()

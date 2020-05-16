@@ -26,8 +26,8 @@ class UserManager
 
 public:
 
-    UserManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
-        : xmlFileWithUsers(fileNameUsers, fileNameIncomes/*, string fileNameExpenses*/)
+    UserManager(string fileNameUsers, string fileNameIncomes, string fileNameExpenses)
+        : xmlFileWithUsers(fileNameUsers, fileNameIncomes, fileNameExpenses)
     {
         loggedInUserID = 0;
         users = xmlFileWithUsers.loadUsersFromFile();

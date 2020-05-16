@@ -7,13 +7,14 @@ int main()
 {
 
 
-    WalletManager walletManager("users.xml", "incomes.xml");
+    WalletManager walletManager("users.xml", "incomes.xml", "expenses.xml");
 
     //walletManager.registration();
     walletManager.displayAllUsers();
     walletManager.logIn();
     //walletManager.displayAllIncomes1();
-    walletManager.addIncome();
+    //walletManager.addIncome();
+    walletManager.addExpense();
     //walletManager.displayAllIncome();
     //walletManager.displayIncomesCurrentMonth();
     //walletManager.displayIncomesPreviousMonth();

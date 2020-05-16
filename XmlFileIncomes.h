@@ -18,18 +18,10 @@ class XmlFileIncomes : public XmlFile
     int lastIncomeID;
 
     int getLastIncomeIdFromFile();
-/*
-    int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneAdresataOddzielonePionowymiKreskami);
-    string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
-    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-    int pobierzZPlikuIdOstatniegoAdresata();
-    void usunPlik(string NAZWA_PLIKU_Z_ADRESATAMI);
-    void zmienNazwePliku(string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, string NAZWA_PLIKU_Z_ADRESATAMI);
-*/
+
 public:
-    XmlFileIncomes(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
-        : XmlFile(fileNameUsers, fileNameIncomes/*, fileNameExpenses*/)
+    XmlFileIncomes(string fileNameUsers, string fileNameIncomes, string fileNameExpenses)
+        : XmlFile(fileNameUsers, fileNameIncomes, fileNameExpenses)
     {
         lastIncomeID = 0;
     }

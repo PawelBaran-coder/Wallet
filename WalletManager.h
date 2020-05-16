@@ -19,8 +19,8 @@ class WalletManager
 
 public:
 
-WalletManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
-        : userManager(fileNameUsers, fileNameIncomes/*, fileNameExpenses*/), FILE_NAME_INCOMES(fileNameIncomes)/*, FILE_NAME_EXPENSES(fileNameExpenses)*/
+WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpenses)
+        : userManager(fileNameUsers, fileNameIncomes, fileNameExpenses), FILE_NAME_INCOMES(fileNameIncomes), FILE_NAME_EXPENSES(fileNameExpenses)
     {
         balanceSheet = NULL;
     }
@@ -38,12 +38,18 @@ WalletManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExp
     bool isLogIn();
 
     void addIncome();
-
-    void displayAllIncome();
-    void displayAllIncomes1();
+    void displayAllIncomesItr();
+    void displayAllIncomes();
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
+
+    void addExpense();
+    void displayAllExpensesItr();
+    void displayAllExpenses();
+    void displayExpensesCurrentMonth();
+    void displayExpensesPreviousMonth();
+    void displayExpensesPeriodTime();
 };
 
 
