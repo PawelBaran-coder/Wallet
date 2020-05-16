@@ -18,8 +18,8 @@ class XmlFileWithUsers : public XmlFile
 
 public:
 
-    XmlFileWithUsers(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
-        : XmlFile(fileNameUsers, fileNameIncomes/*, fileNameExpenses*/)
+    XmlFileWithUsers(string fileNameUsers, string fileNameIncomes, string fileNameExpenses)
+        : XmlFile(fileNameUsers, fileNameIncomes, fileNameExpenses)
     {}
 
     void addUserToFile(User user);

@@ -2,28 +2,31 @@
 #define EXPENSE_H
 
 #include <iostream>
-
+#include "Income.h"
 //#include "Date.h"
 
 using namespace std;
 
-class Expense
+class Expense : public Income
 {
     //Date date;
-    int expenseId;
-    int userId;
-    float expenseAmount;
-    string description;
+    //int id;
+    //int userId;
+    //float amount;
+    //string description;
 
 public:
 
-    void setExpenseId(int newExpenseId);
-    void setExpenseAmount(float newExpenseAmount);
-    void setDescription(string newDescription);
+bool operator < (const Expense &x)const
+    {
+        return date < x.date;
+    }
 
-    int getExpenseId();
-    float getExpenseAmount();
-    string getDescription();
+
+//Expense(int id, int userId, float amount, string description/*, string fileNameExpenses*/)
+  //      : Income(id, userId, amount, description/*, fileNameExpenses*/)
+  //  {}
+
 
 };
 

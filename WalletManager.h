@@ -19,8 +19,8 @@ class WalletManager
 
 public:
 
-WalletManager(string fileNameUsers, string fileNameIncomes/*, string fileNameExpenses*/)
-        : userManager(fileNameUsers, fileNameIncomes/*, fileNameExpenses*/), FILE_NAME_INCOMES(fileNameIncomes)/*, FILE_NAME_EXPENSES(fileNameExpenses)*/
+WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpenses)
+        : userManager(fileNameUsers, fileNameIncomes, fileNameExpenses), FILE_NAME_INCOMES(fileNameIncomes), FILE_NAME_EXPENSES(fileNameExpenses)
     {
         balanceSheet = NULL;
     }

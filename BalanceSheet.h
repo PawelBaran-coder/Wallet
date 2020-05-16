@@ -11,9 +11,9 @@
 #include<algorithm>
 
 #include "Income.h"
-//#include "Expense.h"
+#include "Expense.h"
 #include "XmlFileIncomes.h"
-//#include "XmlFileExpenses.h"
+#include "XmlFileExpenses.h"
 #include "CurrentDate.h"
 #include "Date.h"
 
@@ -24,17 +24,18 @@ class BalanceSheet
     const int LOGGED_IN_USER_ID;
     XmlFileIncomes xmlFileIncomes;
     vector <Income> incomes;
-    // vector <Expense> expenses;
+    vector <Expense> expenses;
 
     //TRZEBA BEDZIE ZROBIC XMLFILEEXPENSES JAKO WSKAZNIK
-//    XmlFileExpenses xmlFileExpenses;
+    XmlFileExpenses xmlFileExpenses;
     //Data data;
     //CurrentDate currentDate;
     //char answer;
     //float accountBalance;
     Income enterNewIncomeData();
-    int getNewIncomeId();
-
+    int getIncomeNewId();
+    Expense enterNewExpenseData();
+    int getExpenseNewId();
     /*
     Adresat podajDaneNowegoAdresata();
     int podajIdWybranegoAdresata();
@@ -45,13 +46,14 @@ class BalanceSheet
 
 public:
 
-    BalanceSheet(string fileNameUsers, string fileNameIncomes, /*string fileNameExpenses,*/ int loggedInUserID)
-        :xmlFileIncomes(fileNameUsers,fileNameIncomes/*, fileNameExpenses*/), LOGGED_IN_USER_ID(loggedInUserID)
+    BalanceSheet(string fileNameUsers, string fileNameIncomes, string fileNameExpenses, int loggedInUserID)
+        :xmlFileIncomes(fileNameUsers,fileNameIncomes, fileNameExpenses),
+         xmlFileExpenses(fileNameUsers,fileNameIncomes, fileNameExpenses), LOGGED_IN_USER_ID(loggedInUserID)
     {
-
         //incomes = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
         incomes = xmlFileIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
         sort( incomes.begin(), incomes.end() );
+        sort( expenses.begin(), expenses.end() );
     }
 
     void addIncome();

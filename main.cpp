@@ -7,7 +7,7 @@ int main()
 {
 
 
-    WalletManager walletManager("users.xml", "incomes.xml");
+    WalletManager walletManager("users.xml", "incomes.xml", "expenses.xml");
 
     //walletManager.registration();
     walletManager.displayAllUsers();

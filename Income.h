@@ -7,30 +7,30 @@ using namespace std;
 
 class Income
 {
-    int incomeId;
+protected:
+
+    int id;
     int userId;
-    int incomeDate;
-    float incomeAmount;
+    int date;
+    float amount;
     string description;
-
-
 
 public:
 
-bool operator < (const Income &x)const
+    bool operator < (const Income &x)const
     {
-        return incomeDate < x.incomeDate;
+        return date < x.date;
     }
-    void setIncomeDate (int newIncomeDate);
-    void setIncomeId(int newIncomeId);
+    void setDate (int newDate);
+    void setId(int newId);
     void setUserId(int newUserId);
-    void setIncomeAmount(float newIncomeAmount);
+    void setAmount(float newAmount);
     void setDescription(string newDescription);
 
-    int getIncomeDate();
-    int getIncomeId();
+    int getDate();
+    int getId();
     int getUserId();
-    float getIncomeAmount();
+    float getAmount();
     string getDescription();
 
 };

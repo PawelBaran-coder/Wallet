@@ -14,7 +14,7 @@ void WalletManager::logIn()
 {
     userManager.logIn();
    if (userManager.isLogIn())
-    balanceSheet = new BalanceSheet(FILE_NAME_USERS, FILE_NAME_INCOMES, /*FILE_NAME_EXPENSES,*/ userManager.getLoggedInUserID());
+    balanceSheet = new BalanceSheet(FILE_NAME_USERS, FILE_NAME_INCOMES, FILE_NAME_EXPENSES, userManager.getLoggedInUserID());
 }
 
 void WalletManager::logOut()
