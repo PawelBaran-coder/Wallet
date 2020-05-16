@@ -4,36 +4,30 @@ void WalletManager::registration()
 {
     userManager.registration();
 }
-
 void WalletManager::displayAllUsers()
 {
     userManager.displayAllUsers();
 }
-
 void WalletManager::logIn()
 {
     userManager.logIn();
    if (userManager.isLogIn())
     balanceSheet = new BalanceSheet(FILE_NAME_USERS, FILE_NAME_INCOMES, FILE_NAME_EXPENSES, userManager.getLoggedInUserID());
 }
-
 void WalletManager::logOut()
 {
     userManager.logOut();
     delete balanceSheet;
     balanceSheet = NULL;
 }
-
 void WalletManager::changePasswordLoggedInUser()
 {
     userManager.changePasswordLoggedInUser();
 }
-
 bool WalletManager::isLogIn()
 {
     userManager.isLogIn();
 }
-
 void WalletManager::addIncome()
 {
     if(userManager.isLogIn())
@@ -47,11 +41,11 @@ void WalletManager::addIncome()
     }
 }
 
-void WalletManager::displayAllIncome()
+void WalletManager::displayAllIncomesItr()
 {
     if(userManager.isLogIn())
     {
-        balanceSheet->displayAllIncome();
+        balanceSheet->displayAllIncomesItr();
     }
     else
     {
@@ -59,11 +53,11 @@ void WalletManager::displayAllIncome()
         system("pause");
     }
 }
-void WalletManager::displayAllIncomes1()
+void WalletManager::displayAllIncomes()
 {
     if(userManager.isLogIn())
     {
-        balanceSheet->displayAllIncomes1();
+        balanceSheet->displayAllIncomes();
     }
     else
     {
@@ -108,3 +102,67 @@ void WalletManager::displayIncomesPeriodTime()
         system("pause");
     }
 }
+//-----------------------------EXPENSES----------------------------------
+void WalletManager::addExpense()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->addExpense();
+    }
+    else
+    {
+        cout << "Aby dodac koszt, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+
+void WalletManager::displayAllExpensesItr()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayAllExpensesItr();
+    }
+    else
+    {
+        cout << "Aby dodac koszt, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+
+void WalletManager::displayExpensesCurrentMonth()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayExpensesCurrentMonth();
+    }
+    else
+    {
+        cout << "Aby wyswietlic wydatki biezacego miesiaca, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+void WalletManager::displayExpensesPreviousMonth()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayExpensesPreviousMonth();
+    }
+    else
+    {
+        cout << "Aby wyswietlic wydatki poprzedniego miesiaca, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+void WalletManager::displayExpensesPeriodTime()
+{
+    if(userManager.isLogIn())
+    {
+        balanceSheet->displayExpensesPeriodTime();
+    }
+    else
+    {
+        cout << "Aby wyswietlic wydatki z zadanego okresu, musisz byc zalogowany" << endl;
+        system("pause");
+    }
+}
+//-----------------------------------------------------------------------

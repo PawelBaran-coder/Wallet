@@ -36,20 +36,17 @@ Income BalanceSheet::enterNewIncomeData()
         cout << "podaj ponownie odpowiedz: TAK (t) lub NIE (n)" << endl;
         cin >> answer;
     }
-
     if (answer == 'n')
     {
         cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
 //NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
         income.setDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
     }
-
     if (answer == 't')
     {
         cout << "dzisiejsza data to: " << currentdate.getCurrentDateInt() << endl;
         income.setDate(currentdate.getCurrentDateInt() );
     }
-
     cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
     income.setDescription(AdditionalMethods::loadLine());
 
@@ -72,13 +69,13 @@ int BalanceSheet::getIncomeNewId()
 //-------------------------------EXPENSE-------------------------------------
 void BalanceSheet::addExpense()
 {
-    Income income;
+    Expense expense;
     system("cls");
-    cout << " >>> DODAWANIE PRZYCHODU <<<" << endl << endl;
+    cout << " >>> DODAWANIE KOSZTU <<<" << endl << endl;
 
-    income = enterNewIncomeData();
-    incomes.push_back(income);
-    xmlFileIncomes.addIncomeToFile(income);
+    expense = enterNewExpenseData();
+    expenses.push_back(expense);
+    xmlFileExpenses.addExpenseToFile(expense);
 
     cout << endl;
     cout << "Nowy przychod zostal dodany" << endl;
@@ -94,10 +91,10 @@ Expense BalanceSheet::enterNewExpenseData()
     expense.setId(getExpenseNewId());
     expense.setUserId(LOGGED_IN_USER_ID);
 
-    cout << "Podaj warosc przychodu: ";
+    cout << "Podaj warosc kosztu: ";
     expense.setAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
 
-    cout << "Czy przychod dotyczy dnia dzisiejszego? (t/n): ";
+    cout << "Czy koszt dotyczy dnia dzisiejszego? (t/n): ";
     answer = AdditionalMethods::loadChar();
 
     while (answer != 'n' && answer != 't')
@@ -109,7 +106,7 @@ Expense BalanceSheet::enterNewExpenseData()
 
     if (answer == 'n')
     {
-        cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
+        cout << "Podaj date kosztu w formacie rrrr-mm-dd: ";
 //NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
         expense.setDate(AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
     }
@@ -120,15 +117,15 @@ Expense BalanceSheet::enterNewExpenseData()
         expense.setDate(currentdate.getCurrentDateInt() );
     }
 
-    cout << "Podaj opis przychodu np. wyplata, sprzedaz na allegro itp.: ";
+    cout << "Podaj opis kosztu np. jedzenie, mieszkanie, transport itp.: ";
     expense.setDescription(AdditionalMethods::loadLine());
 
     cout << "dodane do wektora" << endl << endl;
-    cout << "Id przychodu:      " << expense.getId() << endl;
-    cout << "Id uzytkownika:    " << expense.getUserId() << endl;
-    cout << "data przychodu:    " << expense.getDate() << endl;
-    cout << "wartosc przychodu: " << expense.getAmount() << endl;
-    cout << "opis:              " << expense.getDescription() << endl;
+    cout << "Id kosztu:      " << expense.getId() << endl;
+    cout << "Id uzytkownika: " << expense.getUserId() << endl;
+    cout << "data kosztu:    " << expense.getDate() << endl;
+    cout << "wartosc kosztu: " << expense.getAmount() << endl;
+    cout << "opis:           " << expense.getDescription() << endl;
     system("pause");
     return expense;
 }
@@ -139,8 +136,87 @@ int BalanceSheet::getExpenseNewId()
     else
         return expenses.back().getId() + 1;
 }
+void BalanceSheet::displayAllExpensesItr()
+{
+    system("cls");
+    if (!expenses.empty())
+    {
+        cout << "             >>> KOSZTY <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+        {
+            displayExpense(*itr);
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << endl << "Ksiazka kosztow jest pusta." << endl << endl;
+    }
+    system("pause");
+}
+void BalanceSheet::displayExpense(Expense expense)
+{
+    cout << endl << "Id:                 " << expense.getId() << endl;
+    cout << "Id uzytkownika:               " << expense.getUserId() << endl;
+    cout << "data kosztu:           " << expense.getDate() << endl;
+    cout << "wartosc kosztu:     " << expense.getAmount() << endl;
+    cout << "opis:              " << expense.getDescription() << endl;
+}
+void BalanceSheet::displayExpensesCurrentMonth()
+{
+    CurrentDate currentDate;
+
+    int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
+
+    for (int i = 0; i < expenses.size(); i++)
+    {
+        if (expenses[i].getDate() >= firstDayCurrentMonth)
+        {
+            cout << "data: " << expenses[i].getDate() << endl;
+            cout << "wartosc kosztu: " << expenses[i].getAmount() << endl;
+        }
+    }
+}
+void BalanceSheet::displayExpensesPreviousMonth()
+{
+    CurrentDate currentDate;
+    Date date;
+
+    int firstDayCurrentMonth = currentDate.firstDayCurrentMonth();
+    int firstDayPreviousMonth = date.firstDayPreviousMonth();
+
+    for (int i = 0; i < expenses.size(); i++)
+    {
+        if (expenses[i].getDate() < firstDayCurrentMonth && expenses[i].getDate() >= firstDayPreviousMonth)
+        {
+            cout << "data: " << expenses[i].getDate() << endl;
+            cout << "wartosc kosztu: " << expenses[i].getAmount() << endl;
+        }
+    }
+}
+void BalanceSheet::displayExpensesPeriodTime()
+{
+    int startingDate;
+    int endDate;
+
+    cout << "Podaj date poczatkowa w formacie rrrr-mm-dd: ";
+    startingDate = AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+    cout << "Podaj date koncowa w formacie rrrr-mm-dd: ";
+    endDate = AdditionalMethods::convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+
+    for (int i = 0; i < expenses.size(); i++)
+    {
+        if (expenses[i].getDate() <= endDate && expenses[i].getDate() >= startingDate)
+        {
+            cout << "data: " << expenses[i].getDate() << endl;
+            cout << "wartosc kosztu: " << expenses[i].getAmount() << endl;
+        }
+    }
+}
+
 //--------------------------------------------------------------------
-void BalanceSheet::displayAllIncome()
+void BalanceSheet::displayAllIncomesItr()
 {
     system("cls");
     if (!incomes.empty())
@@ -167,7 +243,7 @@ void BalanceSheet::displayIncome(Income income)
     cout << "wartosc przychodu:     " << income.getAmount() << endl;
     cout << "opis:              " << income.getDescription() << endl;
 }
-void BalanceSheet::displayAllIncomes1()
+void BalanceSheet::displayAllIncomes()
 {
     cout << "odczytane z wektora" << endl;
     cout << " liczba zapisanych przychodow w wektorze: " << incomes.size() << endl;
@@ -232,4 +308,12 @@ void BalanceSheet::displayIncomesPeriodTime()
             cout << "wartosc przychodu: " << incomes[i].getAmount() << endl;
         }
     }
+}
+void BalanceSheet::displayIncomesSum()
+{
+
+}
+void BalanceSheet::displayExpensesSum()
+{
+
 }

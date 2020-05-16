@@ -50,21 +50,31 @@ public:
         :xmlFileIncomes(fileNameUsers,fileNameIncomes, fileNameExpenses),
          xmlFileExpenses(fileNameUsers,fileNameIncomes, fileNameExpenses), LOGGED_IN_USER_ID(loggedInUserID)
     {
-        //incomes = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+        expenses = xmlFileExpenses.loadExpensesFromFile(LOGGED_IN_USER_ID);
         incomes = xmlFileIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
         sort( incomes.begin(), incomes.end() );
         sort( expenses.begin(), expenses.end() );
     }
 
     void addIncome();
-    void addExpense();
-    void displayIncome(Income income);
-    void displayAllIncome();
-    void displayAllIncomes1();
 
+    void displayIncome(Income income);
+    void displayAllIncomesItr();
+    void displayAllIncomes();
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
+
+    void addExpense();
+
+    void displayExpense(Expense expense);
+    void displayAllExpensesItr();
+    void displayExpensesCurrentMonth();
+    void displayExpensesPreviousMonth();
+    void displayExpensesPeriodTime();
+
+    void displayIncomesSum();
+    void displayExpensesSum();
 };
 
 

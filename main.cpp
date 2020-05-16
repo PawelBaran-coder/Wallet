@@ -13,7 +13,8 @@ int main()
     walletManager.displayAllUsers();
     walletManager.logIn();
     //walletManager.displayAllIncomes1();
-    walletManager.addIncome();
+    //walletManager.addIncome();
+    walletManager.addExpense();
     //walletManager.displayAllIncome();
     //walletManager.displayIncomesCurrentMonth();
     //walletManager.displayIncomesPreviousMonth();

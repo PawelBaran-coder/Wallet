@@ -38,12 +38,18 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
     bool isLogIn();
 
     void addIncome();
-
-    void displayAllIncome();
-    void displayAllIncomes1();
+    void displayAllIncomesItr();
+    void displayAllIncomes();
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
+
+    void addExpense();
+    void displayAllExpensesItr();
+    void displayAllExpenses();
+    void displayExpensesCurrentMonth();
+    void displayExpensesPreviousMonth();
+    void displayExpensesPeriodTime();
 };
 
 

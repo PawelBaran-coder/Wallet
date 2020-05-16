@@ -25,16 +25,8 @@ public:
     {
         lastExpenseID = 0;
     }
-
     //int getLastIncomeId();
     void addExpenseToFile(Expense expense);
-
-    vector <Expense> loadExpenseFromFile(int loggedInUserId);
-    /*
-    bool dopiszAdresataDoPliku(Adresat adresat);
-    void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);
-    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    void edytujAdresataWPliku(Adresat adresat, int idEdytowanegoAdresata);
-    */
+    vector <Expense> loadExpensesFromFile(int loggedInUserId);
 };
 #endif
