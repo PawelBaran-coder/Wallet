@@ -59,7 +59,7 @@ public:
     void displayIncome(Income income);
     void displayAllIncome();
     void displayAllIncomes1();
-    void sortIncome();
+
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();

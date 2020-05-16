@@ -104,6 +104,5 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
         xml.OutOfElem();
 
     }
-    system("pause");
     return incomes;
 }

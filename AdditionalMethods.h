@@ -21,6 +21,7 @@ public:
     static char wczytajZnak();
 
     static string loadLine();
+    static char loadChar();
     static bool isDateCorrect();
     static float correctAmount(string amount);
     static int convertStringDateToIntegerDate(string dateStringDash);

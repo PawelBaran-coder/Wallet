@@ -71,18 +71,7 @@ void WalletManager::displayAllIncomes1()
         system("pause");
     }
 }
-void WalletManager::sortIncomeDate()
-{
-    if(userManager.isLogIn())
-    {
-        balanceSheet->sortIncome();
-    }
-    else
-    {
-        cout << "Aby sortowac przychody, musisz byc zalogowany" << endl;
-        system("pause");
-    }
-}
+
 void WalletManager::displayIncomesCurrentMonth()
 {
     if(userManager.isLogIn())

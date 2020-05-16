@@ -7,7 +7,6 @@ using namespace std;
 
 class Income
 {
-    //Date date;
     int incomeId;
     int userId;
     int incomeDate;
@@ -18,9 +17,8 @@ class Income
 
 public:
 
-bool operator < (const Income &x)const //zdefiniowanie zachowania siê
+bool operator < (const Income &x)const
     {
-        //operatora < potrzebnego przy sortowaniu
         return incomeDate < x.incomeDate;
     }
     void setIncomeDate (int newIncomeDate);
