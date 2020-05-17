@@ -42,4 +42,45 @@ int Date::firstDayPreviousMonth()
     int firstDayInt = AdditionalMethods::convertStringToInteger(firstDayStr);
     return firstDayInt;
 }
+string Date::convertIntegerDateToStringDate(int dateInt)
+{
+    string dateStringDash = "";
+    string dateStringNotDash = "";
+    string dateElement ="";
+    char separator = '-';
 
+    ostringstream ss;
+
+    ss << dateInt;
+
+    dateStringNotDash = ss.str();
+
+    for (int i=0; i<8; i++)
+    {
+        dateStringDash+=dateStringNotDash[i];
+        if ((i==3) || (i==5))
+        {
+            dateStringDash+=separator;
+        }
+    }
+    return dateStringDash;
+}
+int Date::convertStringDateToIntegerDate(string dateStringDash)
+{
+    string dateStringNotDash = "";
+    string dateElement ="";
+    int dateInt = 0;
+
+    char separator = '-';
+
+    stringstream ss(dateStringDash);
+
+    while (getline(ss, dateElement, separator))
+    {
+        dateStringNotDash += dateElement;
+    }
+
+    dateInt = atoi(dateStringNotDash.c_str());
+
+    return dateInt;
+}

@@ -10,6 +10,7 @@ using namespace std;
 
 class CurrentDate
 {
+protected:
     int currentYear;
     int currentMonth;
     int currentDay;

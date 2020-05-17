@@ -2,6 +2,8 @@
 #define DATE_H
 
 #include <iostream>
+#include <sstream>
+#include <windows.h>
 #include "CurrentDate.h"
 
 using namespace std;
@@ -31,6 +33,8 @@ public:
     int getDay();
 
     int firstDayPreviousMonth();
+    string convertIntegerDateToStringDate(int dateInt);
+    int convertStringDateToIntegerDate(string dateStringDash);
     /*
     int calculateNumberOfDaysInMonth();
     void displayDate();

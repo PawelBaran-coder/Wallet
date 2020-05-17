@@ -6,9 +6,9 @@
 #include <windows.h>
 #include <sstream>
 #include <fstream>
-#include<cstdlib>
-#include<iomanip>
-#include<algorithm>
+#include <cstdlib>
+#include <iomanip>
+#include <algorithm>
 
 #include "Income.h"
 #include "Expense.h"
@@ -22,27 +22,18 @@ using namespace std;
 class BalanceSheet
 {
     const int LOGGED_IN_USER_ID;
-    XmlFileIncomes xmlFileIncomes;
     vector <Income> incomes;
     vector <Expense> expenses;
 
-    //TRZEBA BEDZIE ZROBIC XMLFILEEXPENSES JAKO WSKAZNIK
+    XmlFileIncomes xmlFileIncomes;
     XmlFileExpenses xmlFileExpenses;
-    //Data data;
-    //CurrentDate currentDate;
-    //char answer;
-    //float accountBalance;
+    float sumIncomes;
+    float sumExpenses;
+
     Income enterNewIncomeData();
     int getIncomeNewId();
     Expense enterNewExpenseData();
     int getExpenseNewId();
-    /*
-    Adresat podajDaneNowegoAdresata();
-    int podajIdWybranegoAdresata();
-    void wyswietlDaneAdresata(Adresat adresat);
-    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
-    char wybierzOpcjeZMenuEdycja();
-    */
 
 public:
 
@@ -54,13 +45,14 @@ public:
         incomes = xmlFileIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
         sort( incomes.begin(), incomes.end() );
         sort( expenses.begin(), expenses.end() );
+
     }
 
     void addIncome();
 
     void displayIncome(Income income);
     void displayAllIncomesItr();
-    void displayAllIncomes();
+
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
@@ -75,6 +67,7 @@ public:
 
     void displayIncomesSum();
     void displayExpensesSum();
+    void displayIncomesExpensesSum();
 };
 
 

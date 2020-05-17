@@ -1,20 +1,5 @@
 #include "AdditionalMethods.h"
 
-string AdditionalMethods::konwerjsaIntNaString(int liczba)
-{
-    ostringstream ss;
-    ss << liczba;
-    string str = ss.str();
-    return str;
-}
-
-string AdditionalMethods::wczytajLinie()
-{
-    string wejscie = "";
-    getline(cin, wejscie);
-    return wejscie;
-}
-
 string AdditionalMethods::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
 {
     if (!tekst.empty())
@@ -23,15 +8,6 @@ string AdditionalMethods::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string teks
         tekst[0] = toupper(tekst[0]);
     }
     return tekst;
-}
-
-int AdditionalMethods::konwersjaStringNaInt(string liczba)
-{
-    int liczbaInt;
-    istringstream iss(liczba);
-    iss >> liczbaInt;
-
-    return liczbaInt;
 }
 
 string AdditionalMethods::pobierzLiczbe(string tekst, int pozycjaZnaku)
@@ -62,24 +38,6 @@ int AdditionalMethods::wczytajLiczbeCalkowita()
     return liczba;
 }
 
-char AdditionalMethods::wczytajZnak()
-{
-    string wejscie = "";
-    char znak  = {0};
-
-    while (true)
-    {
-        getline(cin, wejscie);
-
-        if (wejscie.length() == 1)
-        {
-            znak = wejscie[0];
-            break;
-        }
-        cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
-    }
-    return znak;
-}
 //--------------------------------------------------------
 string AdditionalMethods::loadLine()
 {
@@ -104,25 +62,6 @@ char AdditionalMethods::loadChar()
         cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
     }
     return character;
-}
-int AdditionalMethods::convertStringDateToIntegerDate(string dateStringDash)
-{
-    string dateStringNotDash = "";
-    string dateElement ="";
-    int dateInt = 0;
-
-    char separator = '-';
-
-    stringstream ss(dateStringDash);
-
-    while (getline(ss, dateElement, separator))
-    {
-        dateStringNotDash += dateElement;
-    }
-
-    dateInt = atoi(dateStringNotDash.c_str());
-
-    return dateInt;
 }
 
 float AdditionalMethods::correctAmount(string amount)

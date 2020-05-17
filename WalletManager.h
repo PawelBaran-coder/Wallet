@@ -39,7 +39,7 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
 
     void addIncome();
     void displayAllIncomesItr();
-    void displayAllIncomes();
+
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
@@ -50,6 +50,11 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
     void displayExpensesCurrentMonth();
     void displayExpensesPreviousMonth();
     void displayExpensesPeriodTime();
+
+    void displayIncomesSum();
+    void displayExpensesSum();
+    void displayIncomesExpensesSum();
+
 };
 
 

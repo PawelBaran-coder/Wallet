@@ -14,12 +14,16 @@ int main()
     walletManager.logIn();
     //walletManager.displayAllIncomes1();
     //walletManager.addIncome();
-    walletManager.addExpense();
+    //walletManager.addExpense();
     //walletManager.displayAllIncome();
-    //walletManager.displayIncomesCurrentMonth();
+    walletManager.displayIncomesCurrentMonth();
+    walletManager.displayExpensesCurrentMonth();
     //walletManager.displayIncomesPreviousMonth();
     //walletManager.displayIncomesPeriodTime();
     //walletManager.changePasswordLoggedInUser();
+    walletManager.displayIncomesSum();
+    walletManager.displayExpensesSum();
+    walletManager.displayIncomesExpensesSum();
     walletManager.logOut();
 
     return 0;
