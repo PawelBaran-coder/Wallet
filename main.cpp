@@ -110,7 +110,6 @@ char wybierzOpcjeZMenuUzytkownika()
     cout << "Twoj wybor: ";
 
     choice = AdditionalMethods::loadChar();
-    //wybor = wczytajZnak();
 
     return choice;
 }
