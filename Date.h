@@ -16,16 +16,24 @@ class Date : public CurrentDate
     int daysInMonth;
     int dateInt;
     string dateStr;
+    int startDate;
+    int endDate;
 
 public:
 
     void setYear(int newYear);
     void setMonth(int newMonth);
     void setDay(int newDay);
+    void setStartDate(int newStartDate);
+    void setEndDate(int newEndDate);
 
     int getYear();
     int getMonth();
     int getDay();
+    int getStartDate();
+    int getEndDate();
+
+
 
     int firstDayPreviousMonth();
     string convertIntegerDateToStringDate(int dateInt);

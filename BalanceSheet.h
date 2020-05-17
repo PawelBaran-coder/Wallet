@@ -25,10 +25,13 @@ class BalanceSheet
     vector <Income> incomes;
     vector <Expense> expenses;
 
+    Date date;
     XmlFileIncomes xmlFileIncomes;
     XmlFileExpenses xmlFileExpenses;
     float sumIncomes;
     float sumExpenses;
+
+
 
     Income enterNewIncomeData();
     int getIncomeNewId();
@@ -49,6 +52,7 @@ public:
     }
 
     void addIncome();
+    void addExpense();
 
     void displayIncome(Income income);
     void displayAllIncomesItr();
@@ -56,18 +60,20 @@ public:
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
-
-    void addExpense();
-
-    void displayExpense(Expense expense);
-    void displayAllExpensesItr();
-    void displayExpensesCurrentMonth();
-    void displayExpensesPreviousMonth();
-    void displayExpensesPeriodTime();
-
     void displayIncomesSum();
     void displayExpensesSum();
     void displayIncomesExpensesSum();
+    void displayExpensesCurrentMonth();
+    void displayExpensesPreviousMonth();
+    void displayExpensesPeriodTime();
+    void setPeriodTime();
+
+
+    void displayExpense(Expense expense);
+    void displayAllExpensesItr();
+
+
+
 };
 
 

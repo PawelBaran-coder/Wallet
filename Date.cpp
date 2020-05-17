@@ -15,6 +15,16 @@ void Date::setDay(int newDay)
     if(newDay >= 0)
         day = newDay;
 }
+void Date::setStartDate(int newStartDate)
+{
+     if(newStartDate >= 0)
+        startDate = newStartDate;
+}
+void Date::setEndDate(int newEndDate)
+{
+    if(newEndDate >= 0)
+        endDate = newEndDate;
+}
 int Date::getYear()
 {
     return year;
@@ -27,6 +37,15 @@ int Date::getDay()
 {
     return day;
 }
+int Date::getStartDate()
+{
+    return startDate;
+}
+int Date::getEndDate()
+{
+    return endDate;
+}
+
 
 int Date::firstDayPreviousMonth()
 {
