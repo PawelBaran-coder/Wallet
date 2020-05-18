@@ -44,15 +44,10 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
     void logOut();
     void changePasswordLoggedInUser();
     //--------------------------------------------
-
-    void displayAllIncomesItr();
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
 
-
-    void displayAllExpensesItr();
-    void displayAllExpenses();
     void displayExpensesCurrentMonth();
     void displayExpensesPreviousMonth();
     void displayExpensesPeriodTime();
@@ -60,7 +55,6 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
     void displayIncomesSum();
     void displayExpensesSum();
     void displayIncomesExpensesSum();
-
 };
 
 

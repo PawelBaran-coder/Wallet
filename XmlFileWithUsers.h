@@ -14,8 +14,6 @@ using namespace std;
 
 class XmlFileWithUsers : public XmlFile
 {
-    //User getUserData();
-
 public:
 
     XmlFileWithUsers(string fileNameUsers, string fileNameIncomes, string fileNameExpenses)

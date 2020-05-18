@@ -54,23 +54,22 @@ public:
     void addIncome();
     void addExpense();
 
-    void displayIncome(Income income);
-    void displayAllIncomesItr();
+    void displayIncome(Income income);// do usuniecia
+     void displayExpense(Expense expense); // do usuniecia
 
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
-    void displayIncomesSum();
-    void displayExpensesSum();
-    void displayIncomesExpensesSum();
+
     void displayExpensesCurrentMonth();
     void displayExpensesPreviousMonth();
     void displayExpensesPeriodTime();
+
+    void displayIncomesSum();
+    void displayExpensesSum();
+    void displayIncomesExpensesSum();
+
     void setPeriodTime();
-
-
-    void displayExpense(Expense expense);
-    void displayAllExpensesItr();
 
 
 

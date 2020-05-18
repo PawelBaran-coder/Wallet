@@ -38,7 +38,7 @@ public:
     void logIn();
     void logOut();
     void changePasswordLoggedInUser();
-    void displayAllUsers();
+    void displayAllUsers(); // do usuniecia
     bool isLogIn();
 };
 

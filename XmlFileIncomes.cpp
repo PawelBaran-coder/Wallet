@@ -85,20 +85,15 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
         if (loggedInUserId == atoi( MCD_2PCSZ(xml.GetData()) ))
         {
             income.setUserId(atoi( MCD_2PCSZ(xml.GetData()) ));
-            //cout << "userId: "<< income.getUserId() << endl;
             xml.FindElem( "incomeId" );
             income.setId(atoi( MCD_2PCSZ(xml.GetData()) ));
-            //cout << "incomeId: "<< income.getIncomeId() << endl;
             xml.FindElem( "incomeAmount" );
             income.setAmount(AdditionalMethods::convertStringToFloat(xml.GetData()) );
-            //cout << "incomeAmount: "<< income.getIncomeAmount() << endl;
             xml.FindElem( "incomeDate" );
             income.setDate(atoi( MCD_2PCSZ(xml.GetData()) ));
-            //cout << "incomeDate: "<< income.getIncomeDate() << endl;
             xml.FindElem( "description" );
             income.setDescription(xml.GetData());
-           // cout << "description: "<< income.getDescription() << endl;
-            //system("pause");
+
             incomes.push_back(income);
         }
         xml.OutOfElem();

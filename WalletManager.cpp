@@ -115,28 +115,6 @@ void WalletManager::balancePeriodTime()
     }
 }
 
-
-
-
-
-
-
-
-
-
-void WalletManager::displayAllIncomesItr()
-{
-    if(userManager.isLogIn())
-    {
-        balanceSheet->displayAllIncomesItr();
-    }
-    else
-    {
-        cout << "Aby dodac przychod, musisz byc zalogowany" << endl;
-        system("pause");
-    }
-}
-
 void WalletManager::displayIncomesCurrentMonth()
 {
     if(userManager.isLogIn())
@@ -174,20 +152,6 @@ void WalletManager::displayIncomesPeriodTime()
     }
 }
 //-----------------------------EXPENSES----------------------------------
-
-
-void WalletManager::displayAllExpensesItr()
-{
-    if(userManager.isLogIn())
-    {
-        balanceSheet->displayAllExpensesItr();
-    }
-    else
-    {
-        cout << "Aby dodac koszt, musisz byc zalogowany" << endl;
-        system("pause");
-    }
-}
 
 void WalletManager::displayExpensesCurrentMonth()
 {
