@@ -33,20 +33,21 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
     void registration();
     void displayAllUsers();
     void logIn();
-    void logOut();
-    void changePasswordLoggedInUser();
+
     bool isLogIn();
 
     void addIncome();
-    void displayAllIncomesItr();
-
+    void addExpense();
+    void balanceCurrentMonth();
+    void balancePreviousMonth();
+    void balancePeriodTime();
+    void logOut();
+    void changePasswordLoggedInUser();
+    //--------------------------------------------
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();
 
-    void addExpense();
-    void displayAllExpensesItr();
-    void displayAllExpenses();
     void displayExpensesCurrentMonth();
     void displayExpensesPreviousMonth();
     void displayExpensesPeriodTime();
@@ -54,7 +55,6 @@ WalletManager(string fileNameUsers, string fileNameIncomes, string fileNameExpen
     void displayIncomesSum();
     void displayExpensesSum();
     void displayIncomesExpensesSum();
-
 };
 
 

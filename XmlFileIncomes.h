@@ -30,11 +30,6 @@ public:
     void addIncomeToFile(Income income);
 
     vector <Income> loadIncomesFromFile(int loggedInUserId);
-    /*
-    bool dopiszAdresataDoPliku(Adresat adresat);
-    void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);
-    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    void edytujAdresataWPliku(Adresat adresat, int idEdytowanegoAdresata);
-    */
+
 };
 #endif

@@ -52,20 +52,15 @@ vector <Expense> XmlFileExpenses::loadExpensesFromFile(int loggedInUserId)
         if (loggedInUserId == atoi( MCD_2PCSZ(xml.GetData()) ))
         {
             expense.setUserId(atoi( MCD_2PCSZ(xml.GetData()) ));
-            //cout << "userId: "<< expense.getUserId() << endl;
             xml.FindElem( "expenseId" );
             expense.setId(atoi( MCD_2PCSZ(xml.GetData()) ));
-            //cout << "expenseId: "<< expense.getexpenseId() << endl;
             xml.FindElem( "expenseAmount" );
             expense.setAmount(AdditionalMethods::convertStringToFloat(xml.GetData()) );
-            //cout << "expenseAmount: "<< expense.getexpenseAmount() << endl;
             xml.FindElem( "expenseDate" );
             expense.setDate(atoi( MCD_2PCSZ(xml.GetData()) ));
-            //cout << "expenseDate: "<< expense.getexpenseDate() << endl;
             xml.FindElem( "description" );
             expense.setDescription(xml.GetData());
-           // cout << "description: "<< expense.getDescription() << endl;
-            //system("pause");
+
             expenses.push_back(expense);
         }
         xml.OutOfElem();
