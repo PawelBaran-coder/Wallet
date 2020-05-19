@@ -19,31 +19,22 @@ class Date : public CurrentDate
     int startDate;
     int endDate;
 
+    bool isDateTextCorrect(string dateText);
+    bool isleapYearDateCorrect(string dateText);
+
 public:
 
-    void setYear(int newYear);
-    void setMonth(int newMonth);
-    void setDay(int newDay);
     void setStartDate(int newStartDate);
     void setEndDate(int newEndDate);
 
-    int getYear();
-    int getMonth();
-    int getDay();
     int getStartDate();
     int getEndDate();
-
-
 
     int firstDayPreviousMonth();
     string convertIntegerDateToStringDate(int dateInt);
     int convertStringDateToIntegerDate(string dateStringDash);
-    /*
-    int calculateNumberOfDaysInMonth();
-    void displayDate();
-    bool isLeapYear();
-    int calculateNumberOfDaysInPeriodTime();
-    */
+    bool isDateCorrect(string dateStringWithDash);
+
 };
 
 #endif

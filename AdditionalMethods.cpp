@@ -119,3 +119,13 @@ int AdditionalMethods::convertStringToInteger(string stringNumber)
 
     return integerNumber;
 }
+string AdditionalMethods::getNumber(string text, int charPosition)
+{
+    string number = "";
+    while(isdigit(text[charPosition]) == true)
+    {
+        number += text[charPosition];
+        charPosition ++;
+    }
+    return number;
+}

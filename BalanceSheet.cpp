@@ -20,6 +20,7 @@ Income BalanceSheet::enterNewIncomeData()
     Income income;
     CurrentDate currentdate;
     char answer;
+    string dateTemp;
 
     income.setId(getIncomeNewId());
     income.setUserId(LOGGED_IN_USER_ID);
@@ -34,13 +35,22 @@ Income BalanceSheet::enterNewIncomeData()
     {
         cout << "podales nieprawidlowa litere" << endl;
         cout << "podaj ponownie odpowiedz: TAK (t) lub NIE (n)" << endl;
-        cin >> answer;
+        answer = AdditionalMethods::loadChar();
     }
     if (answer == 'n')
     {
         cout << "Podaj date przychodu w formacie rrrr-mm-dd: ";
-//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
-        income.setDate(date.convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
+
+        dateTemp = AdditionalMethods::loadLine();
+        cout << endl;
+
+        while (date.isDateCorrect(dateTemp) == false)
+        {
+            cout << "Data nieprawidlowa" << endl;
+            cout << "Podaj porawna date: " << endl;
+            dateTemp = AdditionalMethods::loadLine();
+        }
+        income.setDate(date.convertStringDateToIntegerDate(dateTemp));
     }
     if (answer == 't')
     {
@@ -139,6 +149,7 @@ Expense BalanceSheet::enterNewExpenseData()
     Expense expense;
     CurrentDate currentdate;
     char answer;
+    string dateTemp;
 
     expense.setId(getExpenseNewId());
     expense.setUserId(LOGGED_IN_USER_ID);
@@ -146,31 +157,30 @@ Expense BalanceSheet::enterNewExpenseData()
     cout << "Podaj warosc kosztu: ";
     expense.setAmount(AdditionalMethods::correctAmount(AdditionalMethods::loadLine()));
 
-    cout << "Czy koszt dotyczy dnia dzisiejszego? (t/n): ";
+    cout << "koszt dotyczy dnia dzisiejszego? (t/n): ";
     answer = AdditionalMethods::loadChar();
 
     while (answer != 'n' && answer != 't')
     {
         cout << "podales nieprawidlowa litere" << endl;
         cout << "podaj ponownie odpowiedz: TAK (t) lub NIE (n)" << endl;
-        cin >> answer;
+        answer = AdditionalMethods::loadChar();
     }
-
     if (answer == 'n')
     {
         cout << "Podaj date kosztu w formacie rrrr-mm-dd: ";
-//NALEZY JESZCZE SPRAWDZIC POPRAWNOSC PODANEJ DATY
-        expense.setDate(date.convertStringDateToIntegerDate(AdditionalMethods::loadLine()) );
-    }
-    if (answer == 't')
-    {
-        cout << "dzisiejsza data to: " << date.convertIntegerDateToStringDate(currentdate.getCurrentDateInt()) << endl;
-        expense.setDate(currentdate.getCurrentDateInt() );
-    }
-    cout << "Podaj opis kosztu np. jedzenie, mieszkanie, transport itp.: ";
-    expense.setDescription(AdditionalMethods::loadLine());
 
-    return expense;
+        dateTemp = AdditionalMethods::loadLine();
+        cout << endl;
+
+        while (date.isDateCorrect(dateTemp) == false)
+        {
+            cout << "Data nieprawidlowa" << endl;
+            cout << "Podaj porawna date: " << endl;
+            dateTemp = AdditionalMethods::loadLine();
+        }
+        expense.setDate(date.convertStringDateToIntegerDate(dateTemp));
+    }
 }
 int BalanceSheet::getExpenseNewId()
 {
@@ -249,13 +259,33 @@ void BalanceSheet::setPeriodTime()
 {
     int startDate;
     int endDate;
+    string startDateStr;
+    string endDateStr;
 
     cout << "Podaj date poczatkowa w formacie rrrr-mm-dd: ";
-    startDate = date.convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+
+    startDateStr = AdditionalMethods::loadLine();
+
+    while (date.isDateCorrect(startDateStr) == false)
+    {
+        cout << "Data nieprawidlowa" << endl;
+        cout << "Podaj porawna date: " << endl;
+        startDateStr = AdditionalMethods::loadLine();
+    }
+    startDate = date.convertStringDateToIntegerDate(startDateStr);
     date.setStartDate(startDate);
 
     cout << "Podaj date koncowa w formacie rrrr-mm-dd: ";
-    endDate = date.convertStringDateToIntegerDate(AdditionalMethods::loadLine());
+
+    endDateStr = AdditionalMethods::loadLine();
+
+    while (date.isDateCorrect(endDateStr) == false)
+    {
+        cout << "Data nieprawidlowa" << endl;
+        cout << "Podaj porawna date: " << endl;
+        endDateStr = AdditionalMethods::loadLine();
+    }
+    endDate = date.convertStringDateToIntegerDate(endDateStr);
     date.setEndDate(endDate);
 }
 
