@@ -54,9 +54,6 @@ public:
     void addIncome();
     void addExpense();
 
-    void displayIncome(Income income);// do usuniecia
-     void displayExpense(Expense expense); // do usuniecia
-
     void displayIncomesCurrentMonth();
     void displayIncomesPreviousMonth();
     void displayIncomesPeriodTime();

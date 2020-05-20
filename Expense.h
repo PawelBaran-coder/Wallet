@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "Income.h"
-//#include "Date.h"
 
 using namespace std;
 

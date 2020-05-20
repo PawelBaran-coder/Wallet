@@ -5,7 +5,7 @@
 #include <windows.h>
 #include <winbase.h>
 #include "AdditionalMethods.h"
-//#include "Date.h"
+
 using namespace std;
 
 class CurrentDate
@@ -17,7 +17,6 @@ protected:
     string currentYearStr;
     string currentMonthStr;
     string currentDayStr;
-    //int currentDaysInMonth;
     int currentDateInt;
     string currentDateStr;
 

@@ -25,7 +25,6 @@ public:
     {
         lastIncomeID = 0;
     }
-
     //int getLastIncomeId();
     void addIncomeToFile(Income income);
 

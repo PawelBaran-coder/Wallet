@@ -36,12 +36,6 @@ vector <Expense> XmlFileExpenses::loadExpensesFromFile(int loggedInUserId)
 
     bool fileExists = xml.Load(getExpensesFileName().c_str());
 
-    if (!fileExists)
-    {
-        cout <<"nie mozna otworzyc pliku" << endl;
-        system("pause");
-    }
-
     xml.FindElem();
     xml.IntoElem();
     while ( xml.FindElem("Expense") )
