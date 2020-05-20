@@ -1,39 +1,6 @@
 #include "XmlFileIncomes.h"
 #include <cstdlib>
-/*
-int XmlFileIncomes::getLastIncomeId()
-{
-    getLastIncomeIdFromFile();
-    return lastIncomeID;
-}
 
-int XmlFileIncomes::getLastIncomeIdFromFile()
-{
-    lastIncomeID = 0;
-    Income income;
-
-    CMarkup xml;
-
-    bool fileExists = xml.Load(getIncomesFileName().c_str());
-
-    if (!fileExists)
-    {
-        cout <<"nie mozna otworzyc pliku" << endl;
-        system("pause");
-    }
-
-    xml.FindElem();
-    xml.IntoElem();
-    while ( xml.FindElem("Income") )
-    {
-        xml.IntoElem();
-        xml.FindElem( "incomeId" );
-        income.setIncomeId(atoi( MCD_2PCSZ(xml.GetData()) ));
-
-        xml.OutOfElem();
-    }
-}
-*/
 void XmlFileIncomes::addIncomeToFile(Income income)
 {
     CMarkup xml;
@@ -69,12 +36,6 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
 
     bool fileExists = xml.Load(getIncomesFileName().c_str());
 
-    if (!fileExists)
-    {
-        cout <<"nie mozna otworzyc pliku" << endl;
-        system("pause");
-    }
-
     xml.FindElem();
     xml.IntoElem();
     while ( xml.FindElem("Income") )
@@ -97,7 +58,6 @@ vector <Income> XmlFileIncomes::loadIncomesFromFile(int loggedInUserId)
             incomes.push_back(income);
         }
         xml.OutOfElem();
-
     }
     return incomes;
 }

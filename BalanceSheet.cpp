@@ -181,6 +181,15 @@ Expense BalanceSheet::enterNewExpenseData()
         }
         expense.setDate(date.convertStringDateToIntegerDate(dateTemp));
     }
+    if (answer == 't')
+    {
+        cout << "dzisiejsza data to: " << date.convertIntegerDateToStringDate(currentdate.getCurrentDateInt())  << endl;
+        expense.setDate(currentdate.getCurrentDateInt() );
+    }
+    cout << "Podaj opis kosztu np. wyplata, sprzedaz na allegro itp.: ";
+    expense.setDescription(AdditionalMethods::loadLine());
+
+    return expense;
 }
 int BalanceSheet::getExpenseNewId()
 {
@@ -190,14 +199,6 @@ int BalanceSheet::getExpenseNewId()
         return expenses.back().getId() + 1;
 }
 
-void BalanceSheet::displayExpense(Expense expense)
-{
-    cout << endl << "Id:                 " << expense.getId() << endl;
-    cout << "Id uzytkownika:               " << expense.getUserId() << endl;
-    cout << "data kosztu:           " << expense.getDate() << endl;
-    cout << "wartosc kosztu:     " << expense.getAmount() << endl;
-    cout << "opis:              " << expense.getDescription() << endl;
-}
 void BalanceSheet::displayExpensesCurrentMonth()
 {
     CurrentDate currentDate;

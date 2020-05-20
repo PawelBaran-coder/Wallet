@@ -34,7 +34,6 @@ public:
     string convertIntegerDateToStringDate(int dateInt);
     int convertStringDateToIntegerDate(string dateStringDash);
     bool isDateCorrect(string dateStringWithDash);
-
 };
 
 #endif

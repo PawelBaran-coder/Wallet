@@ -12,9 +12,6 @@ using namespace std;
 class AdditionalMethods
 {
 public:
-    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
-    static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    static int wczytajLiczbeCalkowita();
 
     static string loadLine();
     static char loadChar();

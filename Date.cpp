@@ -19,7 +19,6 @@ int Date::getEndDate()
     return endDate;
 }
 
-
 int Date::firstDayPreviousMonth()
 {
     CurrentDate currentDate;
